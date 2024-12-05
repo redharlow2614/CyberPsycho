@@ -8,11 +8,11 @@ end
 
 Str8upDev = {
     description = "Str8up Dev Component",
-    rootPath = getCWD("Str8up Menu")
+    rootPath = getCWD("CyberPsycho")
 }
 
 
-function Str8upDev.Run(Str8upMenu)
+function Str8upDev.Run(CyberPsycho)
 
     Game.GetPlayer():SetWarningMessage("notifications coming soon")
 

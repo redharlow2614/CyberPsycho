@@ -1,34 +1,3 @@
---    __     __     __     __         __         __  __       __     __          --
---   /\ \  _ \ \   /\ \   /\ \       /\ \       /\ \_\ \     /\ \   /\ \         --
---   \ \ \/ ".\ \  \ \ \  \ \ \____  \ \ \____  \ \____ \   _\_\ \  \ \ \____    --
---    \ \__/".~\_\  \ \_\  \ \_____\  \ \_____\  \/\_____\ /\_____\  \ \_____\   --
---     \/_/   \/_/   \/_/   \/_____/   \/_____/   \/_____/ \/_____/   \/_____/   --
---  ---------------------------------------------------------------------------  --
---  This mod was made by WillyJL (WillyJL#3633) from the CP2077 Modding Discord  --
---                    https://github.com/Willy-JL/str8up-menu                    --
---  ------------------------------- CONDITIONS --------------------------------  --
---                     You can use use this mod as long as:                      --
---           ~ You don't reupload / repost this without my permission            --
---  ~ You credit me / the original author when you use a code snippet from here  --
---   ~ You don't fork this and make a competing version available for download   --
---  --------------------------------- CREDITS ---------------------------------  --
---        Full credits to Architect for the mod file layout and structure        --
---      Credits to keanuFreeze / keanuWheeze for the original NoClip script      --
---     Credits to Expired for the awesome equipped item iterator base script     --
---                Credits to Ming for the cleaner cwd pathing fix                --
---                Credits to Architect for the Fix Vehicle script                --
---                 Credits to PerfNormBeast for the NoFall logic                 --
---             Credits to fuegovic for the Disable Police functions              --
---         Credits to MaximiliumM for the Undress / Underwear functions          --
---         Credits to the CET Wiki for the Special Teleport coordinates          --
---      Credits to ZeroBiotic (https://github.com/xray) for the warps idea       --
---    Everything else either I made myself or is too commonly known to credit    --
---               Thanks to NonameNonumber for the coding pointers                --
---   Huge thanks to Architect, Expired and WhySoSerious? for their immense help  --
---   Huge thanks to yamashi, WhySoSerious?, all the CET team and the community   --
---  ---------------------------------------------------------------------------  --
-
-
 function fileExists(filename)
     local f=io.open(filename,"r") if (f~=nil) then io.close(f) return true else return false end
 end
@@ -37,16 +6,16 @@ function getCWD(mod_name)
 end
 
 
-Str8upMenu = {
-    description = "Str8up Menu",
+CyberPsycho = {
+    description = "CyberPsycho",
     version = "2.4h4",
-    rootPath =  getCWD("Str8up Menu"),
+    rootPath =  getCWD("CyberPsycho"),
     drawWindow = false,
     oldDrawWindow = false
 }
 
--- Hack: Multiple string subindexes with . like Str8upMenu["Cheats.noClip"], thanks NonameNonumber !
-setmetatable(Str8upMenu, {
+-- Hack: Multiple string subindexes with . like CyberPsycho["Cheats.noClip"], thanks NonameNonumber !
+setmetatable(CyberPsycho, {
     __index = function(the_table, key)
         while key:find("%.") do
             the_table = rawget(the_table, key:sub(1, key:find("%.")-1))
@@ -65,50 +34,50 @@ setmetatable(Str8upMenu, {
 
 
 -- Imports
-Str8upMenu.Data      = require(Str8upMenu.rootPath .. "modules/data")
-Str8upMenu.Cheats    = require(Str8upMenu.rootPath .. "modules/sections/cheats")
-Str8upMenu.Time      = require(Str8upMenu.rootPath .. "modules/sections/time")
-Str8upMenu.Vehicle   = require(Str8upMenu.rootPath .. "modules/sections/vehicle")
-Str8upMenu.Teleport  = require(Str8upMenu.rootPath .. "modules/sections/teleport")
-Str8upMenu.Player    = require(Str8upMenu.rootPath .. "modules/sections/player")
-Str8upMenu.Utilities = require(Str8upMenu.rootPath .. "modules/sections/utilities")
-Str8upMenu.Dev       = require(Str8upMenu.rootPath .. "modules/sections/dev")
-Str8upMenu.UI        = require(Str8upMenu.rootPath .. "modules/ui")
-Str8upMenu.OnUpdate  = require(Str8upMenu.rootPath .. "modules/onupdate")
-Str8upMenu.Hotkeys   = require(Str8upMenu.rootPath .. "modules/hotkeys")
+CyberPsycho.Data      = require(CyberPsycho.rootPath .. "modules/data")
+CyberPsycho.Cheats    = require(CyberPsycho.rootPath .. "modules/sections/cheats")
+CyberPsycho.Time      = require(CyberPsycho.rootPath .. "modules/sections/time")
+CyberPsycho.Vehicle   = require(CyberPsycho.rootPath .. "modules/sections/vehicle")
+CyberPsycho.Teleport  = require(CyberPsycho.rootPath .. "modules/sections/teleport")
+CyberPsycho.Player    = require(CyberPsycho.rootPath .. "modules/sections/player")
+CyberPsycho.Utilities = require(CyberPsycho.rootPath .. "modules/sections/utilities")
+CyberPsycho.Dev       = require(CyberPsycho.rootPath .. "modules/sections/dev")
+CyberPsycho.UI        = require(CyberPsycho.rootPath .. "modules/ui")
+CyberPsycho.OnUpdate  = require(CyberPsycho.rootPath .. "modules/onupdate")
+CyberPsycho.Hotkeys   = require(CyberPsycho.rootPath .. "modules/hotkeys")
 
 
 -- Load Data
-Str8upMenu.Data.Load()
+CyberPsycho.Data.Load()
 
 
 -- Hotkeys
-Str8upMenu.Hotkeys.SetupHotkeys(Str8upMenu)
+CyberPsycho.Hotkeys.SetupHotkeys(CyberPsycho)
 
 
 -- Events
 registerForEvent("onUpdate", function(deltaTime)
-    Str8upMenu.OnUpdate.Run(Str8upMenu, deltaTime)
+    CyberPsycho.OnUpdate.Run(CyberPsycho, deltaTime)
 end)
 
 registerForEvent("onOverlayOpen", function()
-    Str8upMenu.oldDrawWindow = Str8upMenu.drawWindow
-    Str8upMenu.drawWindow = true
-    Str8upMenu.UI.overlayOpen = true
+    CyberPsycho.oldDrawWindow = CyberPsycho.drawWindow
+    CyberPsycho.drawWindow = true
+    CyberPsycho.UI.overlayOpen = true
 end)
 
 registerForEvent("onOverlayClose", function()
-    Str8upMenu.drawWindow = Str8upMenu.oldDrawWindow
-    Str8upMenu.UI.overlayOpen = false
+    CyberPsycho.drawWindow = CyberPsycho.oldDrawWindow
+    CyberPsycho.UI.overlayOpen = false
 end)
 
 registerForEvent("onDraw", function()
-    if Str8upMenu.drawWindow then
-        Str8upMenu.UI.Draw(Str8upMenu)
+    if CyberPsycho.drawWindow then
+        CyberPsycho.UI.Draw(CyberPsycho)
     end
 end)
 
-print("Str8up Menu v" .. Str8upMenu.version .. " loaded! Configure Hotkeys from CET's overlay! ")
+print("CyberPsycho v" .. CyberPsycho.version .. " loaded! Configure Hotkeys from CET's overlay! ")
 
 
-return Str8upMenu
+return CyberPsycho

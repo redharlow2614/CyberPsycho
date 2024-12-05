@@ -8,25 +8,25 @@ Str8upOnUpdate = {
 }
 
 
-function Str8upOnUpdate.Run(Str8upMenu, deltaTime)
+function Str8upOnUpdate.Run(CyberPsycho, deltaTime)
 
-    if Str8upMenu.UI.popupTimeout ~= 0 then
-        Str8upMenu.UI.popupTimeout = Str8upMenu.UI.popupTimeout - deltaTime
-        if Str8upMenu.UI.popupTimeout < 0 then
-            Str8upMenu.UI.popupTimeout = 0
+    if CyberPsycho.UI.popupTimeout ~= 0 then
+        CyberPsycho.UI.popupTimeout = CyberPsycho.UI.popupTimeout - deltaTime
+        if CyberPsycho.UI.popupTimeout < 0 then
+            CyberPsycho.UI.popupTimeout = 0
         end
     end
 
     Str8upOnUpdate.timers.t0125s = Str8upOnUpdate.timers.t0125s + deltaTime
     if Str8upOnUpdate.timers.t0125s > 0.125 then
         Str8upOnUpdate.timers.t0125s = Str8upOnUpdate.timers.t0125s - 0.125
-        if Str8upMenu.Time.stopTime then
+        if CyberPsycho.Time.stopTime then
             times = Game.GetTimeSystem()
-            times:SetGameTimeBySeconds(Str8upMenu.Time.stopTimeValue)
-        elseif Str8upMenu.Time.timeMultiplier ~= 1 then
+            times:SetGameTimeBySeconds(CyberPsycho.Time.stopTimeValue)
+        elseif CyberPsycho.Time.timeMultiplier ~= 1 then
             times = Game.GetTimeSystem()
             if not times:IsPausedState() then
-                times:SetGameTimeBySeconds(math.floor(times:GetGameTimeStamp())+((Str8upMenu.Time.timeMultiplier-1)))
+                times:SetGameTimeBySeconds(math.floor(times:GetGameTimeStamp())+((CyberPsycho.Time.timeMultiplier-1)))
             end
         end
     end
@@ -34,43 +34,43 @@ function Str8upOnUpdate.Run(Str8upMenu, deltaTime)
     Str8upOnUpdate.timers.t2s = Str8upOnUpdate.timers.t2s + deltaTime
     if Str8upOnUpdate.timers.t2s > 2 then
         Str8upOnUpdate.timers.t2s = Str8upOnUpdate.timers.t2s - 2
-        if Str8upMenu.Vehicle.autoFixVehicle then
-            Str8upMenu.Vehicle.fixVehicle()
+        if CyberPsycho.Vehicle.autoFixVehicle then
+            CyberPsycho.Vehicle.fixVehicle()
         end
-        if Str8upMenu.Cheats.godMode then
-            Str8upMenu.Cheats.updateGodMode()
+        if CyberPsycho.Cheats.godMode then
+            CyberPsycho.Cheats.updateGodMode()
         end
     end
 
-    if Str8upMenu.Cheats.noFall then
+    if CyberPsycho.Cheats.noFall then
         vel = Game.GetPlayer():GetVelocity().z
         if vel < -15 then
             pos = Game.GetPlayer():GetWorldPosition()
             closeToGround = not Game.GetSenseManager():IsPositionVisible(pos, Vector4.new(pos.x, pos.y, pos.z + (vel * deltaTime) - 1, pos.w))
             if closeToGround then
-                Str8upMenu.Utilities.stopFall()
+                CyberPsycho.Utilities.stopFall()
             end
         end
     end
 
-    if Str8upMenu.Cheats.noClip then
-        if Str8upMenu.Cheats.noClipControls.forward then
-            Str8upMenu.Cheats.noClipTp("forward")
+    if CyberPsycho.Cheats.noClip then
+        if CyberPsycho.Cheats.noClipControls.forward then
+            CyberPsycho.Cheats.noClipTp("forward")
         end
-        if Str8upMenu.Cheats.noClipControls.backward then
-            Str8upMenu.Cheats.noClipTp("backward")
+        if CyberPsycho.Cheats.noClipControls.backward then
+            CyberPsycho.Cheats.noClipTp("backward")
         end
-        if Str8upMenu.Cheats.noClipControls.left then
-            Str8upMenu.Cheats.noClipTp("left")
+        if CyberPsycho.Cheats.noClipControls.left then
+            CyberPsycho.Cheats.noClipTp("left")
         end
-        if Str8upMenu.Cheats.noClipControls.right then
-            Str8upMenu.Cheats.noClipTp("right")
+        if CyberPsycho.Cheats.noClipControls.right then
+            CyberPsycho.Cheats.noClipTp("right")
         end
-        if Str8upMenu.Cheats.noClipControls.up then
-            Str8upMenu.Cheats.noClipTp("up")
+        if CyberPsycho.Cheats.noClipControls.up then
+            CyberPsycho.Cheats.noClipTp("up")
         end
-        if Str8upMenu.Cheats.noClipControls.down then
-            Str8upMenu.Cheats.noClipTp("down")
+        if CyberPsycho.Cheats.noClipControls.down then
+            CyberPsycho.Cheats.noClipTp("down")
         end
     end
 

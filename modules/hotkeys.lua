@@ -4,7 +4,7 @@ Str8upHotkeys = {
 }
 
 
-function Str8upHotkeys.SetupHotkeys(Str8upMenu)
+function Str8upHotkeys.SetupHotkeys(CyberPsycho)
 
     registerForEvent('onInit', function()
         ListenerAction = GetSingleton('gameinputScriptListenerAction')
@@ -18,69 +18,69 @@ function Str8upHotkeys.SetupHotkeys(Str8upMenu)
             -- NoClip movement
             if actionName == 'Forward' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.Cheats.noClipControls.forward = true
+                    CyberPsycho.Cheats.noClipControls.forward = true
                 elseif actionType == 'BUTTON_RELEASED' then
-                    Str8upMenu.Cheats.noClipControls.forward = false
+                    CyberPsycho.Cheats.noClipControls.forward = false
                 end
             elseif actionName == 'Back' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.Cheats.noClipControls.backward = true
+                    CyberPsycho.Cheats.noClipControls.backward = true
                 elseif actionType == 'BUTTON_RELEASED' then
-                    Str8upMenu.Cheats.noClipControls.backward = false
+                    CyberPsycho.Cheats.noClipControls.backward = false
                 end
             elseif actionName == 'Left' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.Cheats.noClipControls.left = true
+                    CyberPsycho.Cheats.noClipControls.left = true
                 elseif actionType == 'BUTTON_RELEASED' then
-                    Str8upMenu.Cheats.noClipControls.left = false
+                    CyberPsycho.Cheats.noClipControls.left = false
                 end
             elseif actionName == 'Right' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.Cheats.noClipControls.right = true
+                    CyberPsycho.Cheats.noClipControls.right = true
                 elseif actionType == 'BUTTON_RELEASED' then
-                    Str8upMenu.Cheats.noClipControls.right = false
+                    CyberPsycho.Cheats.noClipControls.right = false
                 end
             elseif actionName == 'Jump' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.Cheats.noClipControls.up = true
+                    CyberPsycho.Cheats.noClipControls.up = true
                 elseif actionType == 'BUTTON_RELEASED' then
-                    Str8upMenu.Cheats.noClipControls.up = false
+                    CyberPsycho.Cheats.noClipControls.up = false
                 end
             elseif actionName == 'ToggleSprint' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.Cheats.noClipControls.down = true
+                    CyberPsycho.Cheats.noClipControls.down = true
                 elseif actionType == 'BUTTON_RELEASED' then
-                    Str8upMenu.Cheats.noClipControls.down = false
+                    CyberPsycho.Cheats.noClipControls.down = false
                 end
 
             -- List menu controls
             elseif actionName == 'Keyboard_0' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.drawWindow = not Str8upMenu.drawWindow
+                    CyberPsycho.drawWindow = not CyberPsycho.drawWindow
                 end
             elseif actionName == 'up_button' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "up")
+                    CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "up")
                 end
             elseif actionName == 'down_button' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "down")
+                    CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "down")
                 end
             elseif actionName == 'left_button' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "left")
+                    CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "left")
                 end
             elseif actionName == 'right_button' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "right")
+                    CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "right")
                 end
             elseif actionName == 'UI_Apply' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "select")
+                    CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "select")
                 end
             elseif actionName == 'Sprint' then
                 if actionType == 'BUTTON_PRESSED' then
-                    Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "back")
+                    CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "back")
                 end
             end
 
@@ -88,96 +88,96 @@ function Str8upHotkeys.SetupHotkeys(Str8upMenu)
     end)
 
     registerHotkey("Str8up_Menu_Toggle_GUI", "Toggle GUI", function()
-        Str8upMenu.drawWindow = not Str8upMenu.drawWindow
+        CyberPsycho.drawWindow = not CyberPsycho.drawWindow
     end)
 
     registerHotkey("Str8up_Menu_List_Menu_Select", "List Menu Select", function()
-        Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "select")
+        CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "select")
     end)
 
     registerHotkey("Str8up_Menu_List_Menu_Back", "List Menu Back", function()
-        Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "back")
+        CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "back")
     end)
 
     registerHotkey("Str8up_Menu_List_Menu_Up", "List Menu Up", function()
-        Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "up")
+        CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "up")
     end)
 
     registerHotkey("Str8up_Menu_List_Menu_Down", "List Menu Down", function()
-        Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "down")
+        CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "down")
     end)
 
     registerHotkey("Str8up_Menu_List_Menu_Left", "List Menu Left", function()
-        Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "left")
+        CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "left")
     end)
 
     registerHotkey("Str8up_Menu_List_Menu_Right", "List Menu Right", function()
-        Str8upMenu.UI.ListMenuInteractions(Str8upMenu, "right")
+        CyberPsycho.UI.ListMenuInteractions(CyberPsycho, "right")
     end)
 
     registerHotkey("Str8up_Menu_Toggle_Infinite_Stamina", "Toggle Infinite Stamina", function()
-        Str8upMenu.Cheats.infStamina = not Str8upMenu.Cheats.infStamina
-        Str8upMenu.Cheats.updateInfStamina()
+        CyberPsycho.Cheats.infStamina = not CyberPsycho.Cheats.infStamina
+        CyberPsycho.Cheats.updateInfStamina()
     end)
 
     registerHotkey("Str8up_Menu_Toggle_Disable_Police", "Toggle Disable Police", function()
-        Str8upMenu.Cheats.disablePolice = not Str8upMenu.Cheats.disablePolice
-        Str8upMenu.Cheats.updateDisablePolice()
+        CyberPsycho.Cheats.disablePolice = not CyberPsycho.Cheats.disablePolice
+        CyberPsycho.Cheats.updateDisablePolice()
     end)
 
     registerHotkey("Str8up_Menu_Toggle_NoClip", "Toggle Noclip", function()
-        Str8upMenu.Cheats.noClip = not Str8upMenu.Cheats.noClip
-        if Str8upMenu.Cheats.noClip and Str8upMenu.Time.superHot then
-            Str8upMenu.Time.superHot = not Str8upMenu.Time.superHot
-            Str8upMenu.Time.updateSuperHot()
+        CyberPsycho.Cheats.noClip = not CyberPsycho.Cheats.noClip
+        if CyberPsycho.Cheats.noClip and CyberPsycho.Time.superHot then
+            CyberPsycho.Time.superHot = not CyberPsycho.Time.superHot
+            CyberPsycho.Time.updateSuperHot()
         end
-        Str8upMenu.Cheats.updateNoClip()
+        CyberPsycho.Cheats.updateNoClip()
     end)
 
     registerHotkey("Str8up_Menu_NoClip_Speed_Up", "Noclip Speed Up", function()
-        if Str8upMenu.Cheats.noClipSpeed < 20 then
-            Str8upMenu.Cheats.noClipSpeed = Str8upMenu.Cheats.noClipSpeed + 1
+        if CyberPsycho.Cheats.noClipSpeed < 20 then
+            CyberPsycho.Cheats.noClipSpeed = CyberPsycho.Cheats.noClipSpeed + 1
         end
     end)
 
     registerHotkey("Str8up_Menu_NoClip_Speed_Down", "Noclip Speed Down", function()
-        if Str8upMenu.Cheats.noClipSpeed > 1 then
-            Str8upMenu.Cheats.noClipSpeed = Str8upMenu.Cheats.noClipSpeed - 1
+        if CyberPsycho.Cheats.noClipSpeed > 1 then
+            CyberPsycho.Cheats.noClipSpeed = CyberPsycho.Cheats.noClipSpeed - 1
         end
     end)
 
     registerHotkey("Str8up_Menu_Toggle_Stop_Time", "Toggle Stop Time", function()
-        Str8upMenu.Time.stopTime = not Str8upMenu.Time.stopTime
-        Str8upMenu.Time.updateStopTimeValue()
+        CyberPsycho.Time.stopTime = not CyberPsycho.Time.stopTime
+        CyberPsycho.Time.updateStopTimeValue()
     end)
 
     registerHotkey("Str8up_Menu_Toggle_SuperHot_Mode", "Toggle SuperHot Mode", function()
-        Str8upMenu.Time.superHot = not Str8upMenu.Time.superHot
-        if Str8upMenu.Time.superHot and Str8upMenu.Cheats.noClip then
-            Str8upMenu.Cheats.noClip = not Str8upMenu.Cheats.noClip
-            Str8upMenu.Cheats.updateNoClip()
+        CyberPsycho.Time.superHot = not CyberPsycho.Time.superHot
+        if CyberPsycho.Time.superHot and CyberPsycho.Cheats.noClip then
+            CyberPsycho.Cheats.noClip = not CyberPsycho.Cheats.noClip
+            CyberPsycho.Cheats.updateNoClip()
         end
-        Str8upMenu.Time.updateSuperHot()
+        CyberPsycho.Time.updateSuperHot()
     end)
 
     registerHotkey("Str8up_Menu_Fix_Vehicle", "Fix Vehicle", function()
-        Str8upMenu.Vehicle.fixVehicle()
+        CyberPsycho.Vehicle.fixVehicle()
     end)
 
     registerHotkey("Str8up_Menu_TP_to_Quest", "TP to Quest", function()
-        Str8upMenu.Teleport.tpToQuest()
+        CyberPsycho.Teleport.tpToQuest()
     end)
 
     registerHotkey("Str8up_Menu_Toggle_Quest_Items", "Toggle Quest Items", function()
-        Str8upMenu.Utilities.toggleQuestItems()
+        CyberPsycho.Utilities.toggleQuestItems()
     end)
 
     registerHotkey("Str8up_Menu_Untrack_Quest", "Untrack Quest", function()
-        Str8upMenu.Utilities.untrackQuest()
+        CyberPsycho.Utilities.untrackQuest()
     end)
 
     registerHotkey("Str8up_Menu_Stop_Fall", "Stop Fall", function()
-        Str8upMenu.Utilities.stopFall()
+        CyberPsycho.Utilities.stopFall()
     end)
 
 end

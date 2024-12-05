@@ -53,7 +53,7 @@ function Str8upPlayer.togglePanties()
 end
 
 
-function Str8upPlayer.addLoadout(Str8upMenu)
+function Str8upPlayer.addLoadout(CyberPsycho)
 
     if Str8upPlayer.newLoadoutName:find("\0", 1, true) then
         addLoadoutName = Str8upPlayer.newLoadoutName:sub(1, Str8upPlayer.newLoadoutName:find("\0", 1, true)-1)
@@ -66,7 +66,7 @@ function Str8upPlayer.addLoadout(Str8upMenu)
     addLoadoutName = addLoadoutName:gsub("%.", " ")
     addLoadoutFinalName = addLoadoutName
     i = 0
-    while Str8upMenu.Data.json.loadouts[addLoadoutFinalName] do
+    while CyberPsycho.Data.json.loadouts[addLoadoutFinalName] do
         i = i + 1
         addLoadoutFinalName = addLoadoutName .. " (" .. i .. ")"
     end
@@ -85,46 +85,46 @@ function Str8upPlayer.addLoadout(Str8upMenu)
         OuterChest = 1,
         Weapon = 3
     }
-    Str8upMenu.Data.json.loadouts[addLoadoutFinalName] = {}
+    CyberPsycho.Data.json.loadouts[addLoadoutFinalName] = {}
     for k,v in pairs(slots) do
         for i=1,v do
             itemid = espd:GetItemInEquipSlot2(k, i - 1)
             if itemid.tdbid.hash ~= 0 then
-                if not Str8upMenu.Data.json.loadouts[addLoadoutFinalName][k] then
-                    Str8upMenu.Data.json.loadouts[addLoadoutFinalName][k] = {}
+                if not CyberPsycho.Data.json.loadouts[addLoadoutFinalName][k] then
+                    CyberPsycho.Data.json.loadouts[addLoadoutFinalName][k] = {}
                 end
                 hash = tonumber(itemid.tdbid.hash)
                 length = tonumber(itemid.tdbid.length)
                 seed = tonumber(itemid.rng_seed)
-                Str8upMenu.Data.json.loadouts[addLoadoutFinalName][k][tostring(i-1)] = { hash = hash, length = length, seed = seed }
+                CyberPsycho.Data.json.loadouts[addLoadoutFinalName][k][tostring(i-1)] = { hash = hash, length = length, seed = seed }
             end
         end
     end
-    Str8upMenu.Data.Save()
-    table.insert(Str8upMenu.Data.loadoutNames, addLoadoutFinalName)
-    Str8upPlayer.loadoutSelection = #Str8upMenu.Data.loadoutNames - 1
+    CyberPsycho.Data.Save()
+    table.insert(CyberPsycho.Data.loadoutNames, addLoadoutFinalName)
+    Str8upPlayer.loadoutSelection = #CyberPsycho.Data.loadoutNames - 1
 
 end
 
 
-function Str8upPlayer.removeLoadout(Str8upMenu)
+function Str8upPlayer.removeLoadout(CyberPsycho)
 
-    if #Str8upMenu.Data.loadoutNames == 0 then
+    if #CyberPsycho.Data.loadoutNames == 0 then
         return
     end
-    Str8upMenu.Data.json.loadouts[Str8upMenu.Data.loadoutNames[Str8upPlayer.loadoutSelection+1]] = nil
-    Str8upMenu.Data.Save()
-    table.remove(Str8upMenu.Data.loadoutNames, Str8upPlayer.loadoutSelection+1)
-    if Str8upPlayer.loadoutSelection+1 > #Str8upMenu.Data.loadoutNames then
-        Str8upPlayer.loadoutSelection = math.max(#Str8upMenu.Data.loadoutNames - 1, 0)
+    CyberPsycho.Data.json.loadouts[CyberPsycho.Data.loadoutNames[Str8upPlayer.loadoutSelection+1]] = nil
+    CyberPsycho.Data.Save()
+    table.remove(CyberPsycho.Data.loadoutNames, Str8upPlayer.loadoutSelection+1)
+    if Str8upPlayer.loadoutSelection+1 > #CyberPsycho.Data.loadoutNames then
+        Str8upPlayer.loadoutSelection = math.max(#CyberPsycho.Data.loadoutNames - 1, 0)
     end
 
 end
 
 
-function Str8upPlayer.loadLoadout(Str8upMenu)
+function Str8upPlayer.loadLoadout(CyberPsycho)
 
-    if #Str8upMenu.Data.loadoutNames == 0 then
+    if #CyberPsycho.Data.loadoutNames == 0 then
         return
     end
     player = Game.GetPlayer()
@@ -148,9 +148,9 @@ function Str8upPlayer.loadLoadout(Str8upMenu)
         for i=1,v do
             itemid = espd:GetItemInEquipSlot2(k, i - 1)
             espd:UnequipItem2(itemid)
-            if Str8upMenu.Data.json.loadouts[Str8upMenu.Data.loadoutNames[Str8upPlayer.loadoutSelection+1]][k] then
-                if Str8upMenu.Data.json.loadouts[Str8upMenu.Data.loadoutNames[Str8upPlayer.loadoutSelection+1]][k][tostring(i-1)] then
-                    item = Str8upMenu.Data.json.loadouts[Str8upMenu.Data.loadoutNames[Str8upPlayer.loadoutSelection+1]][k][tostring(i-1)]
+            if CyberPsycho.Data.json.loadouts[CyberPsycho.Data.loadoutNames[Str8upPlayer.loadoutSelection+1]][k] then
+                if CyberPsycho.Data.json.loadouts[CyberPsycho.Data.loadoutNames[Str8upPlayer.loadoutSelection+1]][k][tostring(i-1)] then
+                    item = CyberPsycho.Data.json.loadouts[CyberPsycho.Data.loadoutNames[Str8upPlayer.loadoutSelection+1]][k][tostring(i-1)]
                     itemid = ItemID.new(TweakDBID.new(item.hash, item.length), item.seed)
                     espd:EquipItem2(itemid, i-1, false, true)
                 end

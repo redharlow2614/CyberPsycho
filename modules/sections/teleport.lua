@@ -48,7 +48,7 @@ function Str8upTeleport.fastTravelTp()
 end
 
 
-function Str8upTeleport.addWarp(Str8upMenu)
+function Str8upTeleport.addWarp(CyberPsycho)
 
     if Str8upTeleport.newWarpName:find("\0", 1, true) then
         addWarpName = Str8upTeleport.newWarpName:sub(1, Str8upTeleport.newWarpName:find("\0", 1, true)-1)
@@ -60,40 +60,40 @@ function Str8upTeleport.addWarp(Str8upMenu)
     end
     addWarpFinalName = addWarpName
     i = 0
-    while Str8upMenu.Data.json.warps[addWarpFinalName] do
+    while CyberPsycho.Data.json.warps[addWarpFinalName] do
         i = i + 1
         addWarpFinalName = addWarpName .. " (" .. i .. ")"
     end
     pos = Game.GetPlayer():GetWorldPosition()
-    Str8upMenu.Data.json.warps[addWarpFinalName] = { x = pos.x, y = pos.y, z = pos.z, w = pos.w, yaw = Game.GetPlayer():GetWorldYaw() }
-    Str8upMenu.Data.Save()
-    table.insert(Str8upMenu.Data.warpsNames, addWarpFinalName)
-    Str8upTeleport.warpSelection = #Str8upMenu.Data.warpsNames - 1
+    CyberPsycho.Data.json.warps[addWarpFinalName] = { x = pos.x, y = pos.y, z = pos.z, w = pos.w, yaw = Game.GetPlayer():GetWorldYaw() }
+    CyberPsycho.Data.Save()
+    table.insert(CyberPsycho.Data.warpsNames, addWarpFinalName)
+    Str8upTeleport.warpSelection = #CyberPsycho.Data.warpsNames - 1
 
 end
 
 
-function Str8upTeleport.removeWarp(Str8upMenu)
+function Str8upTeleport.removeWarp(CyberPsycho)
 
-    if #Str8upMenu.Data.warpsNames == 0 then
+    if #CyberPsycho.Data.warpsNames == 0 then
         return
     end
-    Str8upMenu.Data.json.warps[Str8upMenu.Data.warpsNames[Str8upTeleport.warpSelection+1]] = nil
-    Str8upMenu.Data.Save()
-    table.remove(Str8upMenu.Data.warpsNames, Str8upTeleport.warpSelection+1)
-    if Str8upTeleport.warpSelection+1 > #Str8upMenu.Data.warpsNames then
-        Str8upTeleport.warpSelection = math.max(#Str8upMenu.Data.warpsNames - 1, 0)
+    CyberPsycho.Data.json.warps[CyberPsycho.Data.warpsNames[Str8upTeleport.warpSelection+1]] = nil
+    CyberPsycho.Data.Save()
+    table.remove(CyberPsycho.Data.warpsNames, Str8upTeleport.warpSelection+1)
+    if Str8upTeleport.warpSelection+1 > #CyberPsycho.Data.warpsNames then
+        Str8upTeleport.warpSelection = math.max(#CyberPsycho.Data.warpsNames - 1, 0)
     end
 
 end
 
 
-function Str8upTeleport.tpToWarp(Str8upMenu)
+function Str8upTeleport.tpToWarp(CyberPsycho)
 
-    if #Str8upMenu.Data.warpsNames == 0 then
+    if #CyberPsycho.Data.warpsNames == 0 then
         return
     end
-    tpTo = Str8upMenu.Data.json.warps[Str8upMenu.Data.warpsNames[Str8upTeleport.warpSelection+1]]
+    tpTo = CyberPsycho.Data.json.warps[CyberPsycho.Data.warpsNames[Str8upTeleport.warpSelection+1]]
     Game.GetTeleportationFacility():Teleport(Game.GetPlayer(), Vector4.new(tpTo.x, tpTo.y, tpTo.z, tpTo.w) , EulerAngles.new(0,0,tpTo.yaw))
 
 end

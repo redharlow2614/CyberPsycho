@@ -12,7 +12,7 @@ CyberPsychoUI = {
     devMode = false,
     cursor = {
         submenu = "CyberPsycho",
-        selected = "Player"
+        selected = "Player Options"
     },
     overlayOpen = false,
     x = nil,

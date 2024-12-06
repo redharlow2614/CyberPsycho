@@ -11,7 +11,7 @@ CyberPsychoData = {
     rootPath = getCWD("CyberPsycho")
 }
 
-CyberPsychoData.dataPath = CyberPsychoData.rootPath .. "CyberPsycho_data.json"
+CyberPsychoData.dataPath = CyberPsychoData.rootPath .. "str8up_data.json"
 
 function CyberPsychoData.Load()
 
@@ -21,11 +21,17 @@ function CyberPsychoData.Load()
         io.close(f)
     else
         f = io.open(CyberPsychoData.dataPath, "w")
-        f:write("{\"loadouts\":{},\"warps\":{}")
+        f:write("{\"loadouts\":{},\"warps\":{}}")
         io.close(f)
         f = io.open(CyberPsychoData.dataPath, "r")
         CyberPsychoData.json = json.decode(f:read("*all"))
         io.close(f)
+    end
+
+    -- Create missing vars for backwards compatibility
+    if CyberPsychoData.json.clickGUI == nil then
+        CyberPsychoData.json.clickGUI = false
+        CyberPsychoData.Save()
     end
 
     CyberPsychoData.warpsNames = {}

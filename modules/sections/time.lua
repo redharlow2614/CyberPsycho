@@ -1,6 +1,6 @@
 
-Str8upTime = {
-    description = "Str8up Time Component",
+CyberPsychoTime = {
+    description = "CyberPsycho Time Component",
     h = 0,
     m = 0,
     s = 0,
@@ -11,26 +11,26 @@ Str8upTime = {
 }
 
 
-function Str8upTime.setTime()
+function CyberPsychoTime.setTime()
 
-    Game.GetTimeSystem():SetGameTimeByHMS(Str8upTime.h, Str8upTime.m, Str8upTime.s)
+    Game.GetTimeSystem():SetGameTimeByHMS(CyberPsychoTime.h, CyberPsychoTime.m, CyberPsychoTime.s)
 
 end
 
 
-function Str8upTime.updateStopTimeValue()
+function CyberPsychoTime.updateStopTimeValue()
 
-    if Str8upTime.stopTime then
+    if CyberPsychoTime.stopTime then
         times = Game.GetTimeSystem()
-        Str8upTime.stopTimeValue = math.floor(times:GetGameTimeStamp())
+        CyberPsychoTime.stopTimeValue = math.floor(times:GetGameTimeStamp())
     end
 
 end
 
 
-function Str8upTime.updateSuperHot()
+function CyberPsychoTime.updateSuperHot()
 
-    if Str8upTime.superHot then
+    if CyberPsychoTime.superHot then
         Game.GetTimeSystem():SetIgnoreTimeDilationOnLocalPlayerZero(true)
         Game.SetTimeDilation(0.0000000000001)
     else
@@ -40,4 +40,4 @@ function Str8upTime.updateSuperHot()
 
 end
 
-return Str8upTime
+return CyberPsychoTime

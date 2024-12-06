@@ -6,52 +6,46 @@ function getCWD(mod_name)
 end
 
 
-Str8upData = {
-    description = "Str8up Data Component",
+CyberPsychoData = {
+    description = "CyberPsycho Data Component",
     rootPath = getCWD("CyberPsycho")
 }
 
-Str8upData.dataPath = Str8upData.rootPath .. "str8up_data.json"
+CyberPsychoData.dataPath = CyberPsychoData.rootPath .. "CyberPsycho_data.json"
 
-function Str8upData.Load()
+function CyberPsychoData.Load()
 
-    if fileExists(Str8upData.dataPath) then
-        f = io.open(Str8upData.dataPath, "r")
-        Str8upData.json = json.decode(f:read("*all"))
+    if fileExists(CyberPsychoData.dataPath) then
+        f = io.open(CyberPsychoData.dataPath, "r")
+        CyberPsychoData.json = json.decode(f:read("*all"))
         io.close(f)
     else
-        f = io.open(Str8upData.dataPath, "w")
-        f:write("{\"loadouts\":{},\"warps\":{},\"clickGUI\":false}")
+        f = io.open(CyberPsychoData.dataPath, "w")
+        f:write("{\"loadouts\":{},\"warps\":{}")
         io.close(f)
-        f = io.open(Str8upData.dataPath, "r")
-        Str8upData.json = json.decode(f:read("*all"))
+        f = io.open(CyberPsychoData.dataPath, "r")
+        CyberPsychoData.json = json.decode(f:read("*all"))
         io.close(f)
     end
 
-    -- Create missing vars for backwards compatibility
-    if Str8upData.json.clickGUI == nil then
-        Str8upData.json.clickGUI = false
-        Str8upData.Save()
+    CyberPsychoData.warpsNames = {}
+    for warp, _ in pairs(CyberPsychoData.json.warps) do
+        table.insert(CyberPsychoData.warpsNames, warp)
     end
-
-    Str8upData.warpsNames = {}
-    for warp, _ in pairs(Str8upData.json.warps) do
-        table.insert(Str8upData.warpsNames, warp)
-    end
-    Str8upData.loadoutNames = {}
-    for loadout, _ in pairs(Str8upData.json.loadouts) do
-        table.insert(Str8upData.loadoutNames, loadout)
+    CyberPsychoData.loadoutNames = {}
+    for loadout, _ in pairs(CyberPsychoData.json.loadouts) do
+        table.insert(CyberPsychoData.loadoutNames, loadout)
     end
 
 end
 
 
-function Str8upData.Save()
+function CyberPsychoData.Save()
 
-    f = io.open(Str8upData.dataPath, "w+")
-    f:write(json.encode(Str8upData.json))
+    f = io.open(CyberPsychoData.dataPath, "w+")
+    f:write(json.encode(CyberPsychoData.json))
     io.close(f)
 
 end
 
-return Str8upData
+return CyberPsychoData

@@ -1,10 +1,10 @@
 
-Str8upTheme = {
-    description = "Str8up Theme Component"
+CyberPsychoTheme = {
+    description = "CyberPsycho Theme Component"
 }
 
 
-function Str8upTheme.ApplyTheme()
+function CyberPsychoTheme.ApplyTheme()
 
     ImGui.PushStyleVar(ImGuiStyleVar.WindowTitleAlign, 0.5, 0.5)
 
@@ -42,11 +42,11 @@ function Str8upTheme.ApplyTheme()
 end
 
 
-function Str8upTheme.RevertTheme()
+function CyberPsychoTheme.RevertTheme()
 
     ImGui.PopStyleVar(1)
     ImGui.PopStyleColor(30)
 
 end
 
-return Str8upTheme
+return CyberPsychoTheme

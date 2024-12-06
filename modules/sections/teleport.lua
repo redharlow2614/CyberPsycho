@@ -1,6 +1,6 @@
 
-Str8upTeleport = {
-    description = "Str8up Teleport Component",
+CyberPsychoTeleport = {
+    description = "CyberPsycho Teleport Component",
     specialTpSelection = 0,
     specialTpNames = { "Akulov penthouse", "Peralezes Apt", "Gutierrez Apt", "Time Machine Guitar room", "Denny's Estate Inside", "Hanako Estate bedroom", "Voodoo Boys Subway", "Slayton Apt", "NCPD Conference room", "JigJig St hotel room", "Dark Matter hotel room", "Megatower H8 penthouse", "Outside the city (Nomad starting)", "V's Mansion", "Grand Imperial Plaza Mall", "Unfinished Casino", "VB Data Fortress", "River BD School", "Monorail Tunnel", "Konpeki Tower", "Konpeki Tower - V Suite", "Clouds", "Embers", "Badlands Tunnel", "Badlands Tunnel Entrance", "Petrochem Off-limits area", "Arasaka Tower Abandoned area", "Arasaka Tower Jungle", "Arasaka Tower Upper Atrium", "Arasaka Tower CEO level", "Arasaka Tower CEO office", "Arasaka Tower Unlisted levels", "Arasaka Tower Unlisted temple", "Arasaka Tower Counter-intel", "Arasaka Tower Underground", "Arasaka Tower Boring Machine", "Arasaka Mikoshi Mainframe", "Arasaka Orbital Station", "Johnny interrogation room" },
     specialTpCoords = { {-1218.135986, 1409.635010, 113.524445}, {-75.815399, -113.607819, 111.161728}, {20.760391, 5.750076, 138.900955}, {-1843.676392, -575.336243, 7.754036}, {486.977325, 1291.791016, 234.458664}, {290.197662, 1022.468079, 229.920425}, {-1662.758545, -1867.002563, 54.982040}, {-1450.692139, -1038.510742, 77.555298}, {-1761.547729, -1010.821655, 94.300003}, {-664.977112, 847.753113, 28.499626}, {-372.268982, 271.240143, 215.515579}, {-701.484680, 849.270264, 322.252228}, {-3235.881592, -6146.751465, 96.834175}, {-1341.383545, 1242.970337, 111.100006}, {-2278.209473, -1992.328613, 20.570023}, {934.451233, 1458.630981, 242.120010}, {-1661.448242, -1869.755859, 54.992889}, {-6491.909180, -3167.271240, 57.558006}, {-1663.618774, -1867.443726, 54.990150}, {-2229.413818, 1769.449707, 21.000000}, {-2202.186035, 1783.184204, 163.000000}, {-625.404236, 794.564392, 132.252228}, {-1795.816162, -526.988647, 74.241196}, {-1255.622437, 126.991272, -43.753677}, {185.345749, 2365.449707, 67.081177}, {-118.046112, -486.535583, 7.296860}, {-1475.830200, 161.548401, 208.637604}, {-1449.256470, 118.300171, 321.639038}, {-1390.497559, 162.406921, 388.347961}, {-1437.788208, 157.247620, 565.346008}, {-1447.286621, 73.579651, 568.946045}, {-1428.207520, 95.437912, 543.348022}, {-1383.655518, 118.832474, 542.696289}, {-1442.981689, 139.817459, 141.996506}, {-1376.191528, 143.706009, -26.648010}, {-1447.010010, 40.182648, -36.814171}, {-1448.108398, 149.156219, -27.652016}, {4743.650879, -1091.755127, 1310.439575}, {-1389.446533, 141.266556, -139.361572} },
@@ -14,7 +14,7 @@ Str8upTeleport = {
 }
 
 
-function Str8upTeleport.tpToQuest()
+function CyberPsychoTeleport.tpToQuest()
 
     jm = Game.GetJournalManager()
     ms = Game.GetMappinSystem()
@@ -30,30 +30,30 @@ function Str8upTeleport.tpToQuest()
 end
 
 
-function Str8upTeleport.specialTp()
+function CyberPsychoTeleport.specialTp()
 
-    dest = Str8upTeleport.specialTpCoords[Str8upTeleport.specialTpSelection+1]
+    dest = CyberPsychoTeleport.specialTpCoords[CyberPsychoTeleport.specialTpSelection+1]
     Game.TeleportPlayerToPosition(dest[1], dest[2], dest[3])
 
 end
 
 
-function Str8upTeleport.fastTravelTp()
+function CyberPsychoTeleport.fastTravelTp()
 
-    if Str8upTeleport.fastTravelDestinationCoords[Str8upTeleport.fastTravelAreaSelection+1][Str8upTeleport.fastTravelDestinationSelection+1] then
-        dest = Str8upTeleport.fastTravelDestinationCoords[Str8upTeleport.fastTravelAreaSelection+1][Str8upTeleport.fastTravelDestinationSelection+1]
+    if CyberPsychoTeleport.fastTravelDestinationCoords[CyberPsychoTeleport.fastTravelAreaSelection+1][CyberPsychoTeleport.fastTravelDestinationSelection+1] then
+        dest = CyberPsychoTeleport.fastTravelDestinationCoords[CyberPsychoTeleport.fastTravelAreaSelection+1][CyberPsychoTeleport.fastTravelDestinationSelection+1]
         Game.TeleportPlayerToPosition(dest[1], dest[2], dest[3])
     end
 
 end
 
 
-function Str8upTeleport.addWarp(CyberPsycho)
+function CyberPsychoTeleport.addWarp(CyberPsycho)
 
-    if Str8upTeleport.newWarpName:find("\0", 1, true) then
-        addWarpName = Str8upTeleport.newWarpName:sub(1, Str8upTeleport.newWarpName:find("\0", 1, true)-1)
+    if CyberPsychoTeleport.newWarpName:find("\0", 1, true) then
+        addWarpName = CyberPsychoTeleport.newWarpName:sub(1, CyberPsychoTeleport.newWarpName:find("\0", 1, true)-1)
     else
-        addWarpName = Str8upTeleport.newWarpName
+        addWarpName = CyberPsychoTeleport.newWarpName
     end
     if addWarpName == "" then
         addWarpName = "New Warp"
@@ -68,34 +68,34 @@ function Str8upTeleport.addWarp(CyberPsycho)
     CyberPsycho.Data.json.warps[addWarpFinalName] = { x = pos.x, y = pos.y, z = pos.z, w = pos.w, yaw = Game.GetPlayer():GetWorldYaw() }
     CyberPsycho.Data.Save()
     table.insert(CyberPsycho.Data.warpsNames, addWarpFinalName)
-    Str8upTeleport.warpSelection = #CyberPsycho.Data.warpsNames - 1
+    CyberPsychoTeleport.warpSelection = #CyberPsycho.Data.warpsNames - 1
 
 end
 
 
-function Str8upTeleport.removeWarp(CyberPsycho)
+function CyberPsychoTeleport.removeWarp(CyberPsycho)
 
     if #CyberPsycho.Data.warpsNames == 0 then
         return
     end
-    CyberPsycho.Data.json.warps[CyberPsycho.Data.warpsNames[Str8upTeleport.warpSelection+1]] = nil
+    CyberPsycho.Data.json.warps[CyberPsycho.Data.warpsNames[CyberPsychoTeleport.warpSelection+1]] = nil
     CyberPsycho.Data.Save()
-    table.remove(CyberPsycho.Data.warpsNames, Str8upTeleport.warpSelection+1)
-    if Str8upTeleport.warpSelection+1 > #CyberPsycho.Data.warpsNames then
-        Str8upTeleport.warpSelection = math.max(#CyberPsycho.Data.warpsNames - 1, 0)
+    table.remove(CyberPsycho.Data.warpsNames, CyberPsychoTeleport.warpSelection+1)
+    if CyberPsychoTeleport.warpSelection+1 > #CyberPsycho.Data.warpsNames then
+        CyberPsychoTeleport.warpSelection = math.max(#CyberPsycho.Data.warpsNames - 1, 0)
     end
 
 end
 
 
-function Str8upTeleport.tpToWarp(CyberPsycho)
+function CyberPsychoTeleport.tpToWarp(CyberPsycho)
 
     if #CyberPsycho.Data.warpsNames == 0 then
         return
     end
-    tpTo = CyberPsycho.Data.json.warps[CyberPsycho.Data.warpsNames[Str8upTeleport.warpSelection+1]]
+    tpTo = CyberPsycho.Data.json.warps[CyberPsycho.Data.warpsNames[CyberPsychoTeleport.warpSelection+1]]
     Game.GetTeleportationFacility():Teleport(Game.GetPlayer(), Vector4.new(tpTo.x, tpTo.y, tpTo.z, tpTo.w) , EulerAngles.new(0,0,tpTo.yaw))
 
 end
 
-return Str8upTeleport
+return CyberPsychoTeleport

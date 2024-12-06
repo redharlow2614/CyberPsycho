@@ -1,10 +1,10 @@
 
-Str8upUtilities = {
-    description = "Str8up Utilities Component"
+CyberPsychoUtilities = {
+    description = "CyberPsycho Utilities Component"
 }
 
 
-function Str8upUtilities.toggleQuestItems()
+function CyberPsychoUtilities.toggleQuestItems()
 
     player = Game.GetPlayer()
     ssc = Game.GetScriptableSystemsContainer()
@@ -38,17 +38,17 @@ function Str8upUtilities.toggleQuestItems()
 end
 
 
-function Str8upUtilities.untrackQuest()
+function CyberPsychoUtilities.untrackQuest()
 
     Game.untrack()
 
 end
 
 
-function Str8upUtilities.stopFall()
+function CyberPsychoUtilities.stopFall()
 
     Game.GetTeleportationFacility():Teleport(Game.GetPlayer(), Game.GetPlayer():GetWorldPosition() , EulerAngles.new(0,0,Game.GetPlayer():GetWorldYaw()))
 
 end
 
-return Str8upUtilities
+return CyberPsychoUtilities

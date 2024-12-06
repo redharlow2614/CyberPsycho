@@ -1,6 +1,6 @@
 
-Str8upCheats = {
-    description = "Str8up Cheats Component",
+CyberPsychoCheats = {
+    description = "CyberPsycho Cheats Component",
     moneyToAdd = 0,
     componentAmount = 0,
     componentToAdd = 0,
@@ -25,33 +25,33 @@ Str8upCheats = {
 }
 
 
-function Str8upCheats.addMoney()
+function CyberPsychoCheats.addMoney()
 
-    Game.AddToInventory("Items.money", Str8upCheats.moneyToAdd)
-
-end
-
-
-function Str8upCheats.addComponents()
-
-    Game.AddToInventory(Str8upCheats.componentIDs[Str8upCheats.componentToAdd+1], Str8upCheats.componentAmount)
+    Game.AddToInventory("Items.money", CyberPsychoCheats.moneyToAdd)
 
 end
 
 
-function Str8upCheats.addItems()
+function CyberPsychoCheats.addComponents()
 
-    Str8upCheats.itemToAdd = Str8upCheats.itemToAdd:gsub("Items.", "")
-    Str8upCheats.itemToAdd = Str8upCheats.itemToAdd:gsub("Game.AddToInventory[(]\"", "")
-    Str8upCheats.itemToAdd = Str8upCheats.itemToAdd:gsub("\",1[)]", "")
-    Game.AddToInventory("Items." .. Str8upCheats.itemToAdd, Str8upCheats.itemAmount)
+    Game.AddToInventory(CyberPsychoCheats.componentIDs[CyberPsychoCheats.componentToAdd+1], CyberPsychoCheats.componentAmount)
 
 end
 
 
-function Str8upCheats.updateGodMode()
+function CyberPsychoCheats.addItems()
 
-    if Str8upCheats.godMode then
+    CyberPsychoCheats.itemToAdd = CyberPsychoCheats.itemToAdd:gsub("Items.", "")
+    CyberPsychoCheats.itemToAdd = CyberPsychoCheats.itemToAdd:gsub("Game.AddToInventory[(]\"", "")
+    CyberPsychoCheats.itemToAdd = CyberPsychoCheats.itemToAdd:gsub("\",1[)]", "")
+    Game.AddToInventory("Items." .. CyberPsychoCheats.itemToAdd, CyberPsychoCheats.itemAmount)
+
+end
+
+
+function CyberPsychoCheats.updateGodMode()
+
+    if CyberPsychoCheats.godMode then
         Game.GetGodModeSystem():EnableOverride(Game.GetPlayer():GetEntityID(), "Invulnerable", CName.new("SecondHeart"))
         if Game.GetWorkspotSystem():IsActorInWorkspot(Game.GetPlayer()) then
             veh = Game['GetMountedVehicle;GameObject'](Game.GetPlayer())
@@ -85,16 +85,16 @@ function Str8upCheats.updateGodMode()
 end
 
 
-function Str8upCheats.updateInfStamina()
+function CyberPsychoCheats.updateInfStamina()
 
-    Game.InfiniteStamina(Str8upCheats.infStamina)
+    Game.InfiniteStamina(CyberPsychoCheats.infStamina)
 
 end
 
 
-function Str8upCheats.updateDisablePolice()
+function CyberPsychoCheats.updateDisablePolice()
 
-    if Str8upCheats.disablePolice then
+    if CyberPsychoCheats.disablePolice then
         Game.PrevSys_off()
     else
         Game.PrevSys_on()
@@ -103,9 +103,9 @@ function Str8upCheats.updateDisablePolice()
 end
 
 
-function Str8upCheats.updateNoClip()
+function CyberPsychoCheats.updateNoClip()
 
-    if Str8upCheats.noClip then
+    if CyberPsychoCheats.noClip then
         times = Game.GetTimeSystem()
         times:SetIgnoreTimeDilationOnLocalPlayerZero(false)
         Game.SetTimeDilation(0.0000000000001)
@@ -116,9 +116,9 @@ function Str8upCheats.updateNoClip()
 end
 
 
-function Str8upCheats.noClipTp(direction)
+function CyberPsychoCheats.noClipTp(direction)
 
-    if Str8upCheats.noClip then
+    if CyberPsychoCheats.noClip then
         if direction == "forward" or direction == "backward" then
             dir = Game.GetCameraSystem():GetActiveCameraForward()
         elseif direction == "right" or direction == "left" then
@@ -126,21 +126,21 @@ function Str8upCheats.noClipTp(direction)
         end
         pos = Game.GetPlayer():GetWorldPosition()
         if direction == "forward" or direction == "right" then
-            xNew = pos.x + (dir.x * Str8upCheats.noClipSpeed)
-            yNew = pos.y + (dir.y * Str8upCheats.noClipSpeed)
-            zNew = pos.z + (dir.z * Str8upCheats.noClipSpeed)
+            xNew = pos.x + (dir.x * CyberPsychoCheats.noClipSpeed)
+            yNew = pos.y + (dir.y * CyberPsychoCheats.noClipSpeed)
+            zNew = pos.z + (dir.z * CyberPsychoCheats.noClipSpeed)
         elseif direction == "backward" or direction == "left" then
-            xNew = pos.x - (dir.x * Str8upCheats.noClipSpeed)
-            yNew = pos.y - (dir.y * Str8upCheats.noClipSpeed)
-            zNew = pos.z - (dir.z * Str8upCheats.noClipSpeed)
+            xNew = pos.x - (dir.x * CyberPsychoCheats.noClipSpeed)
+            yNew = pos.y - (dir.y * CyberPsychoCheats.noClipSpeed)
+            zNew = pos.z - (dir.z * CyberPsychoCheats.noClipSpeed)
         elseif direction == "up" then
             xNew = pos.x
             yNew = pos.y
-            zNew = pos.z + (0.5 * Str8upCheats.noClipSpeed)
+            zNew = pos.z + (0.5 * CyberPsychoCheats.noClipSpeed)
         elseif direction == "down" then
             xNew = pos.x
             yNew = pos.y
-            zNew = pos.z - (0.5 * Str8upCheats.noClipSpeed)
+            zNew = pos.z - (0.5 * CyberPsychoCheats.noClipSpeed)
         end
         tpTo = Vector4.new(xNew,yNew,zNew,pos.w)
         Game.GetTeleportationFacility():Teleport(Game.GetPlayer(), tpTo , EulerAngles.new(0,0,Game.GetPlayer():GetWorldYaw()))
@@ -149,4 +149,4 @@ function Str8upCheats.noClipTp(direction)
 
 end
 
-return Str8upCheats
+return CyberPsychoCheats

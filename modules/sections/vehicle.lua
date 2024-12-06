@@ -1,11 +1,11 @@
 
-Str8upVehicle = {
-    description = "Str8up Vehicle Component",
+CyberPsychoVehicle = {
+    description = "CyberPsycho Vehicle Component",
     autoFixVehicle = false
 }
 
 
-function Str8upVehicle.fixVehicle()
+function CyberPsychoVehicle.fixVehicle()
 
     if Game.GetWorkspotSystem():IsActorInWorkspot(Game.GetPlayer()) then
         veh = Game['GetMountedVehicle;GameObject'](Game.GetPlayer())
@@ -22,10 +22,10 @@ function Str8upVehicle.fixVehicle()
 end
 
 
-function Str8upVehicle.toggleSummonMode()
+function CyberPsychoVehicle.toggleSummonMode()
 
     Game.GetVehicleSystem():ToggleSummonMode()
 
 end
 
-return Str8upVehicle
+return CyberPsychoVehicle

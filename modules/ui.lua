@@ -6,13 +6,13 @@ function getCWD(mod_name)
 end
 
 
-Str8upUI = {
-    description = "Str8up UI Component",
+CyberPsychoUI = {
+    description = "CyberPsycho UI Component",
     rootPath = getCWD("CyberPsycho"),
     devMode = false,
     cursor = {
         submenu = "CyberPsycho",
-        selected = "Cheats"
+        selected = "Player"
     },
     overlayOpen = false,
     x = nil,
@@ -22,365 +22,30 @@ Str8upUI = {
     menu = {
         ["CyberPsycho"] = {
             type = "section",
-            maxIndex = 7,
-            ["Cheats"] = {
-                index = 1,
-                type = "section",
-                maxIndex = 9,
-                ["Money"] = {
-                    index = 1,
-                    type = "section",
-                    maxIndex = 2,
-                    ["Amount"] = {
-                        index = 1,
-                        type = "int",
-                        var = "Cheats.moneyToAdd",
-                        min = 0,
-                        max = 999999999
-                    },
-                    ["Add"] = {
-                        index = 2,
-                        type = "button",
-                        callback = "Cheats.addMoney"
-                    }
-                },
-                ["Components"] = {
-                    index = 2,
-                    type = "section",
-                    maxIndex = 3,
-                    ["Type"] = {
-                        index = 1,
-                        type = "combo",
-                        var = "Cheats.componentToAdd",
-                        items = "Cheats.componentNames"
-                    },
-                    ["Amount"] = {
-                        index = 2,
-                        type = "int",
-                        var = "Cheats.componentAmount",
-                        min = 0,
-                        max = 999999999
-                    },
-                    ["Add"] = {
-                        index = 3,
-                        type = "button",
-                        callback = "Cheats.addComponents"
-                    }
-                },
-                ["Items"] = {
-                    index = 3,
-                    type = "section",
-                    maxIndex = 3,
-                    ["Name"] = {
-                        index = 1,
-                        type = "text",
-                        var = "Cheats.itemToAdd"
-                    },
-                    ["Amount"] = {
-                        index = 2,
-                        type = "int",
-                        var = "Cheats.itemAmount",
-                        min = 0,
-                        max = 999999999
-                    },
-                    ["Add"] = {
-                        index = 3,
-                        type = "button",
-                        callback = "Cheats.addItems"
-                    }
-                },
-                ["GodMode"] = {
-                    index = 4,
-                    type = "toggle",
-                    var = "Cheats.godMode",
-                    callback = "Cheats.updateGodMode"
-                },
-                ["Infinite Stamina"] = {
-                    index = 5,
-                    type = "toggle",
-                    var = "Cheats.infStamina",
-                    callback = "Cheats.updateInfStamina"
-                },
-                ["Disable Police"] = {
-                    index = 6,
-                    type = "toggle",
-                    var = "Cheats.disablePolice",
-                    callback = "Cheats.updateDisablePolice"
-                },
-                ["No Fall"] = {
-                    index = 7,
-                    type = "toggle",
-                    var = "Cheats.noFall"
-                },
-                ["NoClip"] = {
-                    index = 8,
-                    type = "toggle",
-                    var = "Cheats.noClip",
-                    callback = "Cheats.updateNoClip"
-                },
-                ["NoClip Speed"] = {
-                    index = 9,
-                    type = "int",
-                    var = "Cheats.noClipSpeed",
-                    min = 1,
-                    max = 20
-                }
-            },
-            ["Time Warp"] = {
-                index = 2,
-                type = "section",
-                maxIndex = 8,
-                ["Hours"] = {
-                    index = 1,
-                    type = "int",
-                    var = "Time.h",
-                    callback = "Time.setTime",
-                    min = 0,
-                    max = 23
-                },
-                ["Minutes"] = {
-                    index = 2,
-                    type = "int",
-                    var = "Time.m",
-                    callback = "Time.setTime",
-                    min = 0,
-                    max = 59
-                },
-                ["Seconds"] = {
-                    index = 3,
-                    type = "int",
-                    var = "Time.s",
-                    callback = "Time.setTime",
-                    min = 0,
-                    max = 59
-                },
-                ["Set Time"] = {
-                    index = 4,
-                    type = "button",
-                    callback = "Time.setTime"
-                },
-                ["_1"] = {
-                    index = 5,
-                    type = "spacing"
-                },
-                ["Stop Time Cycle"] = {
-                    index = 6,
-                    type = "toggle",
-                    var = "Time.stopTime",
-                    callback = "Time.updateStopTimeValue"
-                },
-                ["SuperHot Mode"] = {
-                    index = 7,
-                    type = "toggle",
-                    var = "Time.superHot",
-                    callback = "Time.updateSuperHot"
-                },
-                ["Time Multiplier"] = {
-                    index = 8,
-                    type = "int",
-                    var = "Time.timeMultiplier",
-                    min = 1,
-                    max = 100
-                }
-            },
-            ["Vehicle"] = {
-                index = 3,
-                type = "section",
-                maxIndex = 3,
-                ["Auto Fix Vehicle"] = {
-                    index = 1,
-                    type = "toggle",
-                    var = "Vehicle.autoFixVehicle",
-                    callback = "Vehicle.fixVehicle"
-                },
-                ["Fix Vehicle"] = {
-                    index = 2,
-                    type = "button",
-                    callback = "Vehicle.fixVehicle"
-                },
-                ["Toggle Summon Mode"] = {
-                    index = 3,
-                    type = "button",
-                    callback = "Vehicle.toggleSummonMode"
-                }
-            },
-            ["Teleport"] = {
-                index = 4,
-                type = "section",
-                maxIndex = 4,
-                ["TP to Quest"] = {
-                    index = 1,
-                    type = "button",
-                    callback = "Teleport.tpToQuest"
-                },
-                ["Special"] = {
-                    index = 2,
-                    type = "section",
-                    maxIndex = 2,
-                    ["Dest"] = {
-                        index = 1,
-                        type = "combo",
-                        var = "Teleport.specialTpSelection",
-                        items = "Teleport.specialTpNames"
-                    },
-                    ["Teleport"] = {
-                        index = 2,
-                        type = "button",
-                        callback = "Teleport.specialTp"
-                    }
-                },
-                ["Fast Travel"] = {
-                    index = 3,
-                    type = "section",
-                    maxIndex = 3,
-                    ["Area"] = {
-                        index = 1,
-                        type = "combo",
-                        var = "Teleport.fastTravelAreaSelection",
-                        items = "Teleport.fastTravelAreaNames"
-                    },
-                    ["Dest"] = {
-                        index = 2,
-                        type = "combo",
-                        var = "Teleport.fastTravelDestinationSelection",
-                        items = "Teleport.fastTravelDestinationNames",
-                        itemsSubVar = "Teleport.fastTravelAreaSelection",
-                        itemsSubVarMod = "+1"
-                    },
-                    ["Teleport"] = {
-                        index = 3,
-                        type = "button",
-                        callback = "Teleport.fastTravelTp"
-                    }
-                },
-                ["Warps"] = {
-                    index = 4,
-                    type = "section",
-                    maxIndex = 6,
-                    ["Warp"] = {
-                        index = 1,
-                        type = "combo",
-                        var = "Teleport.warpSelection",
-                        items = "Data.warpsNames"
-                    },
-                    ["Warp To"] = {
-                        index = 2,
-                        type = "button",
-                        objCallback = "Teleport.tpToWarp"
-                    },
-                    ["Remove"] = {
-                        index = 3,
-                        type = "button",
-                        objCallback = "Teleport.removeWarp"
-                    },
-                    ["_1"] = {
-                        index = 4,
-                        type = "spacing"
-                    },
-                    ["New Name"] = {
-                        index = 5,
-                        type = "text",
-                        var = "Teleport.newWarpName"
-                    },
-                    ["Add Warp"] = {
-                        index = 6,
-                        type = "button",
-                        objCallback = "Teleport.addWarp"
-                    }
-                }
-            },
-            ["Player"] = {
-                index = 5,
-                type = "section",
-                maxIndex = 4,
-                ["Loadouts"] = {
-                    index = 1,
-                    type = "section",
-                    maxIndex = 6,
-                    ["Loadout"] = {
-                        index = 1,
-                        type = "combo",
-                        var = "Player.loadoutSelection",
-                        items = "Data.loadoutNames"
-                    },
-                    ["Load"] = {
-                        index = 2,
-                        type = "button",
-                        objCallback = "Player.loadLoadout"
-                    },
-                    ["Remove"] = {
-                        index = 3,
-                        type = "button",
-                        objCallback = "Player.removeLoadout"
-                    },
-                    ["_1"] = {
-                        index = 4,
-                        type = "spacing"
-                    },
-                    ["New Name"] = {
-                        index = 5,
-                        type = "text",
-                        var = "Player.newLoadoutName"
-                    },
-                    ["Add Loadout"] = {
-                        index = 6,
-                        type = "button",
-                        objCallback = "Player.addLoadout"
-                    }
-                },
-                ["Undress"] = {
-                    index = 2,
-                    type = "button",
-                    callback = "Player.undress"
-                },
-                ["Toggle Bra"] = {
-                    index = 3,
-                    type = "button",
-                    callback = "Player.toggleBra"
-                },
-                ["Toggle Panties"] = {
-                    index = 4,
-                    type = "button",
-                    callback = "Player.togglePanties"
-                }
-            },
-            ["Utilities"] = {
-                index = 6,
-                type = "section",
-                maxIndex = 3,
-                ["Toggle Quest for Equip Items "] = {
-                    index = 1,
-                    type = "button",
-                    callback = "Utilities.toggleQuestItems"
-                },
-                ["Untrack Quest"] = {
-                    index = 2,
-                    type = "button",
-                    callback = "Utilities.untrackQuest"
-                },
-                ["Stop Fall"] = {
-                    index = 3,
-                    type = "button",
-                    callback = "Utilities.stopFall"
-                }
-            },
-            ["Settings"] = {
-                index = 7,
-                type = "section",
-                maxIndex = 1,
-                ["ClickGUI"] = {
-                    index = 1,
-                    type = "toggle",
-                    var = "Data.json.clickGUI",
-                    callback = "Data.Save"
-                }
-            }
+            maxIndex = 1,
+            ["Player Options"] = {
+				index = 1,
+				type = "section",
+				maxIndex = 2,
+				["GodMode"] = {
+					index = 1,
+					type = "toggle",
+					var = "Player.godMode",
+					callback = "Player.updateGodMode"
+				},
+				["Infinite Stamina"] = {
+					index = 2,
+					type = "toggle",
+					var = "Player.infStamina",
+					callback = "Player.updateInfStamina",
+				}
+			}
         }
     }
 }
 
 -- Hack: Multiple string subindexes with . like CyberPsycho["Cheats.noClip"], thanks NonameNonumber !
-setmetatable(Str8upUI.menu, {
+setmetatable(CyberPsychoUI.menu, {
     __index = function(the_table, key)
         while key:find("%.") do
             the_table = rawget(the_table, key:sub(1, key:find("%.")-1))
@@ -397,31 +62,31 @@ setmetatable(Str8upUI.menu, {
     end
 })
 
-Str8upUI.Theme = require(Str8upUI.rootPath .. "modules/theme")
+CyberPsychoUI.Theme = require(CyberPsychoUI.rootPath .. "modules/theme")
 
-function Str8upUI.ListMenuInteractions(CyberPsycho, action)
+function CyberPsychoUI.ListMenuInteractions(CyberPsycho, action)
 
-    if not CyberPsycho.Data.clickGUI and CyberPsycho.drawWindow and not Str8upUI.pendingPopup.alive and Str8upUI.popupTimeout == 0 then
-        item = Str8upUI.menu[Str8upUI.cursor.submenu .. "." .. Str8upUI.cursor.selected]
-        submenu = Str8upUI.menu[Str8upUI.cursor.submenu]
+    if not CyberPsycho.Data.clickGUI and CyberPsycho.drawWindow and not CyberPsychoUI.pendingPopup.alive and CyberPsychoUI.popupTimeout == 0 then
+        item = CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu .. "." .. CyberPsychoUI.cursor.selected]
+        submenu = CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu]
         if action == "select" then
             if submenu.type == "combo" then
                 if submenu.itemsSubVar then
-                    CyberPsycho[submenu.var] = (Str8upUI.GetIndexFromName(CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)], Str8upUI.cursor.selected) - 1) or 0
+                    CyberPsycho[submenu.var] = (CyberPsychoUI.GetIndexFromName(CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)], CyberPsychoUI.cursor.selected) - 1) or 0
                 else
-                    CyberPsycho[submenu.var] = (Str8upUI.GetIndexFromName(CyberPsycho[submenu.items], Str8upUI.cursor.selected) - 1) or 0
+                    CyberPsycho[submenu.var] = (CyberPsychoUI.GetIndexFromName(CyberPsycho[submenu.items], CyberPsychoUI.cursor.selected) - 1) or 0
                 end
-                Str8upUI.cursor.selected = Str8upUI.cursor.submenu:sub(#Str8upUI.cursor.submenu - Str8upUI.cursor.submenu:reverse():find("%.")+2)
-                Str8upUI.cursor.submenu = Str8upUI.cursor.submenu:sub(1, #Str8upUI.cursor.submenu - Str8upUI.cursor.submenu:reverse():find("%."))
+                CyberPsychoUI.cursor.selected = CyberPsychoUI.cursor.submenu:sub(#CyberPsychoUI.cursor.submenu - CyberPsychoUI.cursor.submenu:reverse():find("%.")+2)
+                CyberPsychoUI.cursor.submenu = CyberPsychoUI.cursor.submenu:sub(1, #CyberPsychoUI.cursor.submenu - CyberPsychoUI.cursor.submenu:reverse():find("%."))
             elseif item.type == "section" then
-                Str8upUI.cursor.submenu = Str8upUI.cursor.submenu .. "." .. Str8upUI.cursor.selected
-                Str8upUI.cursor.selected = Str8upUI.GetNameFromIndex(Str8upUI.menu[Str8upUI.cursor.submenu], 1)
+                CyberPsychoUI.cursor.submenu = CyberPsychoUI.cursor.submenu .. "." .. CyberPsychoUI.cursor.selected
+                CyberPsychoUI.cursor.selected = CyberPsychoUI.GetNameFromIndex(CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu], 1)
             elseif item.type == "combo" then
-                Str8upUI.cursor.submenu = Str8upUI.cursor.submenu .. "." .. Str8upUI.cursor.selected
+                CyberPsychoUI.cursor.submenu = CyberPsychoUI.cursor.submenu .. "." .. CyberPsychoUI.cursor.selected
                 if item.itemsSubVar then
-                    Str8upUI.cursor.selected = CyberPsycho[item.items][CyberPsycho[item.itemsSubVar] + tonumber(item.itemsSubVarMod)][CyberPsycho[item.var]+1] or ""
+                    CyberPsychoUI.cursor.selected = CyberPsycho[item.items][CyberPsycho[item.itemsSubVar] + tonumber(item.itemsSubVarMod)][CyberPsycho[item.var]+1] or ""
                 else
-                    Str8upUI.cursor.selected = CyberPsycho[item.items][CyberPsycho[item.var]+1] or ""
+                    CyberPsychoUI.cursor.selected = CyberPsycho[item.items][CyberPsycho[item.var]+1] or ""
                 end
             elseif item.type == "button" then
                 if item.callback then
@@ -436,27 +101,27 @@ function Str8upUI.ListMenuInteractions(CyberPsycho, action)
                     CyberPsycho[item.callback]()
                 end
             elseif item.type == "int" then
-                Str8upUI.pendingPopup = {
+                CyberPsychoUI.pendingPopup = {
                     alive = true,
                     type = "int",
-                    name = Str8upUI.cursor.selected,
+                    name = CyberPsychoUI.cursor.selected,
                     var = item.var,
                     callback = item.callback,
                     min = item.min,
                     max = item.max
                 }
             elseif item.type == "text" then
-                Str8upUI.pendingPopup = {
+                CyberPsychoUI.pendingPopup = {
                     alive = true,
                     type = "text",
-                    name = Str8upUI.cursor.selected,
+                    name = CyberPsychoUI.cursor.selected,
                     var = item.var
                 }
             end
         elseif action == "back" then
-            if Str8upUI.cursor.submenu:find("%.") then
-                Str8upUI.cursor.selected = Str8upUI.cursor.submenu:sub(#Str8upUI.cursor.submenu - Str8upUI.cursor.submenu:reverse():find("%.")+2)
-                Str8upUI.cursor.submenu = Str8upUI.cursor.submenu:sub(1, #Str8upUI.cursor.submenu - Str8upUI.cursor.submenu:reverse():find("%."))
+            if CyberPsychoUI.cursor.submenu:find("%.") then
+                CyberPsychoUI.cursor.selected = CyberPsychoUI.cursor.submenu:sub(#CyberPsychoUI.cursor.submenu - CyberPsychoUI.cursor.submenu:reverse():find("%.")+2)
+                CyberPsychoUI.cursor.submenu = CyberPsychoUI.cursor.submenu:sub(1, #CyberPsychoUI.cursor.submenu - CyberPsychoUI.cursor.submenu:reverse():find("%."))
             else
                 CyberPsycho.drawWindow = false
             end
@@ -465,27 +130,27 @@ function Str8upUI.ListMenuInteractions(CyberPsycho, action)
                 curIndex = item.index
                 maxIndex = submenu.maxIndex
                 if curIndex > 1 then
-                    Str8upUI.cursor.selected = Str8upUI.GetNameFromIndex(submenu, curIndex - 1)
+                    CyberPsychoUI.cursor.selected = CyberPsychoUI.GetNameFromIndex(submenu, curIndex - 1)
                 else
-                    Str8upUI.cursor.selected = Str8upUI.GetNameFromIndex(submenu, maxIndex)
+                    CyberPsychoUI.cursor.selected = CyberPsychoUI.GetNameFromIndex(submenu, maxIndex)
                 end
             elseif submenu.type == "combo" then
                 if #CyberPsycho[submenu.items] ~= 0 then
                     if submenu.itemsSubVar then
-                        curIndex = Str8upUI.GetIndexFromName(CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)], Str8upUI.cursor.selected)
+                        curIndex = CyberPsychoUI.GetIndexFromName(CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)], CyberPsychoUI.cursor.selected)
                         maxIndex = #CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)]
                         if curIndex > 1 then
-                            Str8upUI.cursor.selected = CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)][curIndex-1]
+                            CyberPsychoUI.cursor.selected = CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)][curIndex-1]
                         else
-                            Str8upUI.cursor.selected = CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)][maxIndex]
+                            CyberPsychoUI.cursor.selected = CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)][maxIndex]
                         end
                     else
-                        curIndex = Str8upUI.GetIndexFromName(CyberPsycho[submenu.items], Str8upUI.cursor.selected)
+                        curIndex = CyberPsychoUI.GetIndexFromName(CyberPsycho[submenu.items], CyberPsychoUI.cursor.selected)
                         maxIndex = #CyberPsycho[submenu.items]
                         if curIndex > 1 then
-                            Str8upUI.cursor.selected = CyberPsycho[submenu.items][curIndex-1]
+                            CyberPsychoUI.cursor.selected = CyberPsycho[submenu.items][curIndex-1]
                         else
-                            Str8upUI.cursor.selected = CyberPsycho[submenu.items][maxIndex]
+                            CyberPsychoUI.cursor.selected = CyberPsycho[submenu.items][maxIndex]
                         end
                     end
                 end
@@ -495,27 +160,27 @@ function Str8upUI.ListMenuInteractions(CyberPsycho, action)
                 curIndex = item.index
                 maxIndex = submenu.maxIndex
                 if curIndex < maxIndex then
-                    Str8upUI.cursor.selected = Str8upUI.GetNameFromIndex(submenu, curIndex + 1)
+                    CyberPsychoUI.cursor.selected = CyberPsychoUI.GetNameFromIndex(submenu, curIndex + 1)
                 else
-                    Str8upUI.cursor.selected = Str8upUI.GetNameFromIndex(submenu, 1)
+                    CyberPsychoUI.cursor.selected = CyberPsychoUI.GetNameFromIndex(submenu, 1)
                 end
             elseif submenu.type == "combo" then
                 if #CyberPsycho[submenu.items] ~= 0 then
                     if submenu.itemsSubVar then
-                        curIndex = Str8upUI.GetIndexFromName(CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)], Str8upUI.cursor.selected)
+                        curIndex = CyberPsychoUI.GetIndexFromName(CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)], CyberPsychoUI.cursor.selected)
                         maxIndex = #CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)]
                         if curIndex < maxIndex then
-                            Str8upUI.cursor.selected = CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)][curIndex+1]
+                            CyberPsychoUI.cursor.selected = CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)][curIndex+1]
                         else
-                            Str8upUI.cursor.selected = CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)][1]
+                            CyberPsychoUI.cursor.selected = CyberPsycho[submenu.items][CyberPsycho[submenu.itemsSubVar] + tonumber(submenu.itemsSubVarMod)][1]
                         end
                     else
-                        curIndex = Str8upUI.GetIndexFromName(CyberPsycho[submenu.items], Str8upUI.cursor.selected)
+                        curIndex = CyberPsychoUI.GetIndexFromName(CyberPsycho[submenu.items], CyberPsychoUI.cursor.selected)
                         maxIndex = #CyberPsycho[submenu.items]
                         if curIndex < maxIndex then
-                            Str8upUI.cursor.selected = CyberPsycho[submenu.items][curIndex+1]
+                            CyberPsychoUI.cursor.selected = CyberPsycho[submenu.items][curIndex+1]
                         else
-                            Str8upUI.cursor.selected = CyberPsycho[submenu.items][1]
+                            CyberPsychoUI.cursor.selected = CyberPsycho[submenu.items][1]
                         end
                     end
                 end
@@ -585,14 +250,14 @@ function Str8upUI.ListMenuInteractions(CyberPsycho, action)
 end
 
 
-function Str8upUI.ColoredText(text, color)
+function CyberPsychoUI.ColoredText(text, color)
 
     ImGui.TextColored(color[1], color[2], color[3], color[4], text)
 
 end
 
 
-function Str8upUI.DrawCursorRect(name)
+function CyberPsychoUI.DrawCursorRect(name)
 
     _, cursorY = ImGui.GetCursorScreenPos()
     windowX, _ = ImGui.GetWindowPos()
@@ -602,7 +267,7 @@ function Str8upUI.DrawCursorRect(name)
     ImGui.PushStyleColor(ImGuiCol.Border, 0.00, 0.00, 0.00, 0.00)
     ImGui.SetNextWindowPos(windowX + 1, cursorY - 1)
     ImGui.SetNextWindowSize(windowW - 2, textY + 5)
-    -- if not Str8upUI.overlayOpen and not Str8upUI.pendingPopup.alive and Str8upUI.popupTimeout == 0 then
+    -- if not CyberPsychoUI.overlayOpen and not CyberPsychoUI.pendingPopup.alive and CyberPsychoUI.popupTimeout == 0 then
     --     ImGui.SetNextWindowFocus()
     -- end
     ImGui.Begin(name .. ".Cursor", true, bit32.bor(ImGuiWindowFlags.NoTitleBar, ImGuiWindowFlags.NoMove, ImGuiWindowFlags.NoScrollbar, ImGuiWindowFlags.AlwaysAutoResize, ImGuiWindowFlags.NoResize))
@@ -612,83 +277,83 @@ function Str8upUI.DrawCursorRect(name)
 end
 
 
-function Str8upUI.Section(name)
+function CyberPsychoUI.Section(name)
 
-    if Str8upUI.cursor.selected == name then
+    if CyberPsychoUI.cursor.selected == name then
         color = { 0.00, 0.90, 1.00, 1 }
-        Str8upUI.DrawCursorRect(name)
+        CyberPsychoUI.DrawCursorRect(name)
     else
         color = { 0.69, 0.69, 0.69, 1 }
     end
-    Str8upUI.ColoredText(" " .. name, color)
+    CyberPsychoUI.ColoredText(" " .. name, color)
     xOffset = ImGui.GetWindowWidth() - ImGui.CalcTextSize(">  ")
     ImGui.SameLine(xOffset)
-    Str8upUI.ColoredText(">", color)
+    CyberPsychoUI.ColoredText(">", color)
 
 end
 
 
-function Str8upUI.ComboItem(name)
+function CyberPsychoUI.ComboItem(name)
 
-    if Str8upUI.cursor.selected == name then
+    if CyberPsychoUI.cursor.selected == name then
         color = { 0.00, 0.90, 1.00, 1 }
-        Str8upUI.DrawCursorRect(name)
+        CyberPsychoUI.DrawCursorRect(name)
     else
         color = { 0.69, 0.69, 0.69, 1 }
     end
-    Str8upUI.ColoredText(" " .. name, color)
+    CyberPsychoUI.ColoredText(" " .. name, color)
 
 end
 
 
-function Str8upUI.Toggle(name, status)
+function CyberPsychoUI.Toggle(name, status)
 
-    if Str8upUI.cursor.selected == name then
+    if CyberPsychoUI.cursor.selected == name then
         color = { 0.00, 0.90, 1.00, 1 }
-        Str8upUI.DrawCursorRect(name)
+        CyberPsychoUI.DrawCursorRect(name)
     else
         color = { 0.69, 0.69, 0.69, 1 }
     end
-    Str8upUI.ColoredText(" " .. name, color)
+    CyberPsychoUI.ColoredText(" " .. name, color)
     if status == true then
         xOffset = ImGui.GetWindowWidth() - ImGui.CalcTextSize("ON  ")
         ImGui.SameLine(xOffset)
-        Str8upUI.ColoredText("ON", { 0.00, 1.00, 0.00, 1.00 })
+        CyberPsychoUI.ColoredText("ON", { 0.00, 1.00, 0.00, 1.00 })
     else
         xOffset = ImGui.GetWindowWidth() - ImGui.CalcTextSize("OFF  ")
         ImGui.SameLine(xOffset)
-        Str8upUI.ColoredText("OFF", { 1.00, 0.00, 0.00, 1.00 })
+        CyberPsychoUI.ColoredText("OFF", { 1.00, 0.00, 0.00, 1.00 })
     end
 
 end
 
 
-function Str8upUI.Int(name, value)
+function CyberPsychoUI.Int(name, value)
 
-    if Str8upUI.cursor.selected == name then
+    if CyberPsychoUI.cursor.selected == name then
         color = { 0.00, 0.90, 1.00, 1 }
-        Str8upUI.DrawCursorRect(name)
-        Str8upUI.ColoredText(" " .. name, color)
+        CyberPsychoUI.DrawCursorRect(name)
+        CyberPsychoUI.ColoredText(" " .. name, color)
         xOffset = ImGui.GetWindowWidth() - ImGui.CalcTextSize("<" .. tostring(value) .. ">  ")
         ImGui.SameLine(xOffset)
-        Str8upUI.ColoredText("<" .. tostring(value) .. ">", color)
+        CyberPsychoUI.ColoredText("<" .. tostring(value) .. ">", color)
     else
         color = { 0.69, 0.69, 0.69, 1 }
-        Str8upUI.ColoredText(" " .. name, color)
+        CyberPsychoUI.ColoredText(" " .. name, color)
         xOffset = ImGui.GetWindowWidth() - ImGui.CalcTextSize(tostring(value) .. "  ")
         ImGui.SameLine(xOffset)
-        Str8upUI.ColoredText(tostring(value), color)
+        CyberPsychoUI.ColoredText(tostring(value), color)
     end
 
 end
 
 
-function Str8upUI.Combo(CyberPsycho, item)
+function CyberPsychoUI.Combo(CyberPsycho, item)
 
-    if Str8upUI.cursor.selected == item[1] then
+    if CyberPsychoUI.cursor.selected == item[1] then
         color = { 0.00, 0.90, 1.00, 1 }
-        Str8upUI.DrawCursorRect(item[1])
-        Str8upUI.ColoredText(" " .. item[1], color)  -- fix index higher than max
+        CyberPsychoUI.DrawCursorRect(item[1])
+        CyberPsychoUI.ColoredText(" " .. item[1], color)  -- fix index higher than max
         if item[2].itemsSubVar then
             if ( CyberPsycho[item[2].var] + 1) > #CyberPsycho[item[2].items][CyberPsycho[item[2].itemsSubVar] + tonumber(item[2].itemsSubVarMod)] then
                 CyberPsycho[item[2].var] = #CyberPsycho[item[2].items][CyberPsycho[item[2].itemsSubVar] + tonumber(item[2].itemsSubVarMod)] -1
@@ -708,10 +373,10 @@ function Str8upUI.Combo(CyberPsycho, item)
         end
         xOffset = ImGui.GetWindowWidth() - ImGui.CalcTextSize("<" .. value .. ">  ")
         ImGui.SameLine(xOffset)
-        Str8upUI.ColoredText("<" .. value .. ">", color)
+        CyberPsychoUI.ColoredText("<" .. value .. ">", color)
     else
         color = { 0.69, 0.69, 0.69, 1 }
-        Str8upUI.ColoredText(" " .. item[1], color)
+        CyberPsychoUI.ColoredText(" " .. item[1], color)
         if item[2].itemsSubVar then
             if ( CyberPsycho[item[2].var] + 1) > #CyberPsycho[item[2].items][CyberPsycho[item[2].itemsSubVar] + tonumber(item[2].itemsSubVarMod)] then
                 CyberPsycho[item[2].var] = #CyberPsycho[item[2].items][CyberPsycho[item[2].itemsSubVar] + tonumber(item[2].itemsSubVarMod)] -1
@@ -731,56 +396,56 @@ function Str8upUI.Combo(CyberPsycho, item)
         end
         xOffset = ImGui.GetWindowWidth() - ImGui.CalcTextSize(value .. "  ")
         ImGui.SameLine(xOffset)
-        Str8upUI.ColoredText(value, color)
+        CyberPsychoUI.ColoredText(value, color)
     end
 
 end
 
 
-function Str8upUI.Text(name, value)
+function CyberPsychoUI.Text(name, value)
 
-    if Str8upUI.cursor.selected == name then
+    if CyberPsychoUI.cursor.selected == name then
         color = { 0.00, 0.90, 1.00, 1 }
-        Str8upUI.DrawCursorRect(name)
+        CyberPsychoUI.DrawCursorRect(name)
     else
         color = { 0.69, 0.69, 0.69, 1 }
     end
     if #value > 11 then
         value = value:sub(1, 8) .. "..."
     end
-    Str8upUI.ColoredText(" " .. name, color)
+    CyberPsychoUI.ColoredText(" " .. name, color)
     xOffset = ImGui.GetWindowWidth() - ImGui.CalcTextSize('"' .. value .. '"' .. "  ")
     ImGui.SameLine(xOffset)
-    Str8upUI.ColoredText('"' .. value .. '"', color)
+    CyberPsychoUI.ColoredText('"' .. value .. '"', color)
 
 end
 
 
-function Str8upUI.Button(name)
+function CyberPsychoUI.Button(name)
 
-    if Str8upUI.cursor.selected == name then
+    if CyberPsychoUI.cursor.selected == name then
         color = { 0.00, 0.90, 1.00, 1 }
-        Str8upUI.DrawCursorRect(name)
+        CyberPsychoUI.DrawCursorRect(name)
     else
         color = { 0.69, 0.69, 0.69, 1 }
     end
-    Str8upUI.ColoredText(" " .. name, color)
+    CyberPsychoUI.ColoredText(" " .. name, color)
 
 end
 
 
-function Str8upUI.Spacing(name)
+function CyberPsychoUI.Spacing(name)
 
-    if Str8upUI.cursor.selected == name then
-        Str8upUI.DrawCursorRect(name)
+    if CyberPsychoUI.cursor.selected == name then
+        CyberPsychoUI.DrawCursorRect(name)
     end
     color = { 0, 0, 0, 0 }
-    Str8upUI.ColoredText(" ", color)
+    CyberPsychoUI.ColoredText(" ", color)
 
 end
 
 
-function Str8upUI.CheckIgnoreValue(name)
+function CyberPsychoUI.CheckIgnoreValue(name)
 
     local ignored = { "index", "type", "maxIndex", "var", "vallback", "min", "max" }
     for _, v in pairs(ignored) do
@@ -793,11 +458,11 @@ function Str8upUI.CheckIgnoreValue(name)
 end
 
 
-function Str8upUI.SortItems(input)
+function CyberPsychoUI.SortItems(input)
 
     local items = {}
     for item, content in pairs(input) do
-        if not Str8upUI.CheckIgnoreValue(item) then
+        if not CyberPsychoUI.CheckIgnoreValue(item) then
             table.insert(items, {item, content})
         end
     end
@@ -809,10 +474,10 @@ function Str8upUI.SortItems(input)
 end
 
 
-function Str8upUI.GetNameFromIndex(submenu, index)
+function CyberPsychoUI.GetNameFromIndex(submenu, index)
 
     for name, content in pairs(submenu) do
-        if not Str8upUI.CheckIgnoreValue(name) then
+        if not CyberPsychoUI.CheckIgnoreValue(name) then
             if content.index == index then
                 return name
             end
@@ -823,11 +488,11 @@ function Str8upUI.GetNameFromIndex(submenu, index)
 end
 
 
-function Str8upUI.GetIndexFromName(submenu, name)
+function CyberPsychoUI.GetIndexFromName(submenu, name)
 
     if submenu.type == "section" then
         for index, item in pairs(submenu) do
-            if not Str8upUI.CheckIgnoreValue(name) then
+            if not CyberPsychoUI.CheckIgnoreValue(name) then
                 if item == name then
                     return index
                 end
@@ -845,9 +510,9 @@ function Str8upUI.GetIndexFromName(submenu, name)
 end
 
 
-function Str8upUI.Draw(CyberPsycho)
+function CyberPsychoUI.Draw(CyberPsycho)
 
-    Str8upUI.Theme.ApplyTheme()
+    CyberPsychoUI.Theme.ApplyTheme()
 
     listThemeApplied = false
     if not CyberPsycho.Data.json.clickGUI then
@@ -856,10 +521,10 @@ function Str8upUI.Draw(CyberPsycho)
         ImGui.PushStyleColor(ImGuiCol.TitleBg, 0.99, 0.93, 0.04, 0.69)
     end
 
-    if Str8upUI.devMode and not Str8upUI.menu["CyberPsycho"]["Developer"] then
-        Str8upUI.menu["CyberPsycho"].maxIndex = Str8upUI.menu["CyberPsycho"].maxIndex + 1
-        Str8upUI.menu["CyberPsycho"]["Developer"] = {
-            index = Str8upUI.menu["CyberPsycho"].maxIndex,
+    if CyberPsychoUI.devMode and not CyberPsychoUI.menu["CyberPsycho"]["Developer"] then
+        CyberPsychoUI.menu["CyberPsycho"].maxIndex = CyberPsychoUI.menu["CyberPsycho"].maxIndex + 1
+        CyberPsychoUI.menu["CyberPsycho"]["Developer"] = {
+            index = CyberPsychoUI.menu["CyberPsycho"].maxIndex,
             type = "section",
             maxIndex = 1,
             ["Run Dev Script"] = {
@@ -868,101 +533,101 @@ function Str8upUI.Draw(CyberPsycho)
                 objCallback = "Dev.Run"
             }
         }
-    elseif not Str8upUI.devMode and Str8upUI.menu["CyberPsycho"]["Developer"] then
-        Str8upUI.menu["CyberPsycho"].maxIndex = Str8upUI.menu["CyberPsycho"].maxIndex - 1
-        Str8upUI.menu["CyberPsycho"]["Developer"] = nil
+    elseif not CyberPsychoUI.devMode and CyberPsychoUI.menu["CyberPsycho"]["Developer"] then
+        CyberPsychoUI.menu["CyberPsycho"].maxIndex = CyberPsychoUI.menu["CyberPsycho"].maxIndex - 1
+        CyberPsychoUI.menu["CyberPsycho"]["Developer"] = nil
     end
 
     -- Hack: catch errors in gui to ensure theme vars bleeding is avoided
     pcall(function()
 
-        if Str8upUI.pendingPopup.alive then
+        if CyberPsychoUI.pendingPopup.alive then
             ImGui.OpenPopup("Set Value")
             if ImGui.BeginPopupModal("Set Value", bit32.bor(ImGuiWindowFlags.NoResize, ImGuiWindowFlags.NoScrollbar, ImGuiWindowFlags.NoScrollWithMouse, ImGuiWindowFlags.NoCollapse)) then
                 ImGui.SetWindowFontScale(1.0)
                 screenX, screenY = GetDisplayResolution()
                 ImGui.SetWindowSize(260, 76)
                 ImGui.SetWindowPos((screenX-260)/2, (screenY-76)/2)
-                xOffset = ( ImGui.GetWindowWidth() - ImGui.CalcTextSize(Str8upUI.pendingPopup.name) ) / 2
+                xOffset = ( ImGui.GetWindowWidth() - ImGui.CalcTextSize(CyberPsychoUI.pendingPopup.name) ) / 2
                 ImGui.SameLine(xOffset)
-                ImGui.Text(Str8upUI.pendingPopup.name)
+                ImGui.Text(CyberPsychoUI.pendingPopup.name)
                 ImGui.Spacing()
                 ImGui.PushItemWidth(244)
                 ImGui.SetKeyboardFocusHere()
-                if Str8upUI.pendingPopup.type == "text" then
-                    CyberPsycho[Str8upUI.pendingPopup.var], popupConfirmed = ImGui.InputText("", CyberPsycho[Str8upUI.pendingPopup.var], 100, ImGuiInputTextFlags.EnterReturnsTrue)
-                elseif Str8upUI.pendingPopup.type == "int" then
-                    popupOutput, popupConfirmed = ImGui.InputText("", tostring(CyberPsycho[Str8upUI.pendingPopup.var]), 100, bit32.bor(ImGuiInputTextFlags.EnterReturnsTrue, ImGuiInputTextFlags.CharsDecimal))
+                if CyberPsychoUI.pendingPopup.type == "text" then
+                    CyberPsycho[CyberPsychoUI.pendingPopup.var], popupConfirmed = ImGui.InputText("", CyberPsycho[CyberPsychoUI.pendingPopup.var], 100, ImGuiInputTextFlags.EnterReturnsTrue)
+                elseif CyberPsychoUI.pendingPopup.type == "int" then
+                    popupOutput, popupConfirmed = ImGui.InputText("", tostring(CyberPsycho[CyberPsychoUI.pendingPopup.var]), 100, bit32.bor(ImGuiInputTextFlags.EnterReturnsTrue, ImGuiInputTextFlags.CharsDecimal))
                     if popupOutput == "" then
-                        popupOutput = Str8upUI.pendingPopup.min
+                        popupOutput = CyberPsychoUI.pendingPopup.min
                     end
                     popupOutput = tonumber(popupOutput)
-                    if popupOutput > Str8upUI.pendingPopup.max then
-                        popupOutput = Str8upUI.pendingPopup.max
-                    elseif popupOutput < Str8upUI.pendingPopup.min then
-                        popupOutput = Str8upUI.pendingPopup.min
+                    if popupOutput > CyberPsychoUI.pendingPopup.max then
+                        popupOutput = CyberPsychoUI.pendingPopup.max
+                    elseif popupOutput < CyberPsychoUI.pendingPopup.min then
+                        popupOutput = CyberPsychoUI.pendingPopup.min
                     end
-                    CyberPsycho[Str8upUI.pendingPopup.var] = popupOutput
+                    CyberPsycho[CyberPsychoUI.pendingPopup.var] = popupOutput
                 end
                 if popupConfirmed then
                     ImGui.CloseCurrentPopup()
-                    Str8upUI.pendingPopup.alive = false
-                    Str8upUI.popupTimeout = 0.2
+                    CyberPsychoUI.pendingPopup.alive = false
+                    CyberPsychoUI.popupTimeout = 0.2
                 end
             end
             ImGui.EndPopup()
         end
 
         if not CyberPsycho.Data.json.clickGUI then
-            title = Str8upUI.cursor.submenu
+            title = CyberPsychoUI.cursor.submenu
             if title:find("%.") then
                 title = title:gsub("%.", "/")
                 title = title:gsub("CyberPsycho/", "")
             end
             if ImGui.Begin(title, bit32.bor(ImGuiWindowFlags.NoResize, ImGuiWindowFlags.NoScrollbar, ImGuiWindowFlags.NoScrollWithMouse, ImGuiWindowFlags.NoCollapse, ImGuiWindowFlags.AlwaysAutoResize)) then
                 ImGui.SetWindowSize(10, 10)
-                if Str8upUI.x and Str8upUI.y and not Str8upUI.overlayOpen then
-                    ImGui.SetWindowPos(Str8upUI.x, Str8upUI.y)
+                if CyberPsychoUI.x and CyberPsychoUI.y and not CyberPsychoUI.overlayOpen then
+                    ImGui.SetWindowPos(CyberPsychoUI.x, CyberPsychoUI.y)
                 end
                 ImGui.SetWindowFontScale(1.2)
                 ImGui.SetCursorPosY(12)
                 ImGui.Text("                        ")  -- set minimum menu width
-                if Str8upUI.menu[Str8upUI.cursor.submenu].type == "section" then
-                    items = Str8upUI.SortItems(Str8upUI.menu[Str8upUI.cursor.submenu])
+                if CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu].type == "section" then
+                    items = CyberPsychoUI.SortItems(CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu])
                     for _, item in pairs(items) do
                         if item[2].type == "section" then
-                            Str8upUI.Section(item[1])
+                            CyberPsychoUI.Section(item[1])
                         elseif item[2].type == "combo" then
-                            Str8upUI.Combo(CyberPsycho, item)
+                            CyberPsychoUI.Combo(CyberPsycho, item)
                         elseif item[2].type == "toggle" then
-                            Str8upUI.Toggle(item[1], CyberPsycho[item[2].var])
+                            CyberPsychoUI.Toggle(item[1], CyberPsycho[item[2].var])
                         elseif item[2].type == "int" then
-                            Str8upUI.Int(item[1], CyberPsycho[item[2].var])
+                            CyberPsychoUI.Int(item[1], CyberPsycho[item[2].var])
                         elseif item[2].type == "text" then
-                            Str8upUI.Text(item[1], CyberPsycho[item[2].var])
+                            CyberPsychoUI.Text(item[1], CyberPsycho[item[2].var])
                         elseif item[2].type == "button" then
-                            Str8upUI.Button(item[1])
+                            CyberPsychoUI.Button(item[1])
                         elseif item[2].type == "spacing" then
-                            Str8upUI.Spacing(item[1])
+                            CyberPsychoUI.Spacing(item[1])
                         end
                     end
-                elseif Str8upUI.menu[Str8upUI.cursor.submenu].type == "combo" then
-                    if Str8upUI.menu[Str8upUI.cursor.submenu].itemsSubVar then
-                        items = CyberPsycho[Str8upUI.menu[Str8upUI.cursor.submenu].items][CyberPsycho[Str8upUI.menu[Str8upUI.cursor.submenu].itemsSubVar] + tonumber(Str8upUI.menu[Str8upUI.cursor.submenu].itemsSubVarMod)]
+                elseif CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu].type == "combo" then
+                    if CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu].itemsSubVar then
+                        items = CyberPsycho[CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu].items][CyberPsycho[CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu].itemsSubVar] + tonumber(CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu].itemsSubVarMod)]
                     else
-                        items = CyberPsycho[Str8upUI.menu[Str8upUI.cursor.submenu].items]
+                        items = CyberPsycho[CyberPsychoUI.menu[CyberPsychoUI.cursor.submenu].items]
                     end
                     if #items == 0 then
                         color = { 0.69, 0.69, 0.69, 1 }
-                        Str8upUI.ColoredText(" There's nothing here..", color)
+                        CyberPsychoUI.ColoredText(" There's nothing here..", color)
                     else
                         for _, name in pairs(items) do
-                            Str8upUI.ComboItem(name)
+                            CyberPsychoUI.ComboItem(name)
                         end
                     end
                 end
                 ImGui.Spacing()
-                Str8upUI.x, Str8upUI.y = ImGui.GetWindowPos()
+                CyberPsychoUI.x, CyberPsychoUI.y = ImGui.GetWindowPos()
             end
             ImGui.End()
         else
@@ -1215,7 +880,7 @@ function Str8upUI.Draw(CyberPsycho)
                         ImGui.EndTabItem()
                     end
 
-                    if Str8upUI.devMode then
+                    if CyberPsychoUI.devMode then
                         if ImGui.BeginTabItem("Dev") then
                             ImGui.SetWindowSize(430, 81)
                             ImGui.Spacing()
@@ -1236,7 +901,7 @@ function Str8upUI.Draw(CyberPsycho)
 
     end)
 
-    Str8upUI.Theme.RevertTheme()
+    CyberPsychoUI.Theme.RevertTheme()
 
     if listThemeApplied then
         ImGui.PopStyleColor(2)
@@ -1244,4 +909,4 @@ function Str8upUI.Draw(CyberPsycho)
 
 end
 
-return Str8upUI
+return CyberPsychoUI

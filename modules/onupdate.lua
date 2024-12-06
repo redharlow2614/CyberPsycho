@@ -1,6 +1,6 @@
 
-Str8upOnUpdate = {
-    description = "Str8up OnUpdate Component",
+CyberPsychoOnUpdate = {
+    description = "CyberPsycho OnUpdate Component",
     timers = {
         t0125s = 0,
         t2s = 0
@@ -8,7 +8,7 @@ Str8upOnUpdate = {
 }
 
 
-function Str8upOnUpdate.Run(CyberPsycho, deltaTime)
+function CyberPsychoOnUpdate.Run(CyberPsycho, deltaTime)
 
     if CyberPsycho.UI.popupTimeout ~= 0 then
         CyberPsycho.UI.popupTimeout = CyberPsycho.UI.popupTimeout - deltaTime
@@ -17,9 +17,9 @@ function Str8upOnUpdate.Run(CyberPsycho, deltaTime)
         end
     end
 
-    Str8upOnUpdate.timers.t0125s = Str8upOnUpdate.timers.t0125s + deltaTime
-    if Str8upOnUpdate.timers.t0125s > 0.125 then
-        Str8upOnUpdate.timers.t0125s = Str8upOnUpdate.timers.t0125s - 0.125
+    CyberPsychoOnUpdate.timers.t0125s = CyberPsychoOnUpdate.timers.t0125s + deltaTime
+    if CyberPsychoOnUpdate.timers.t0125s > 0.125 then
+        CyberPsychoOnUpdate.timers.t0125s = CyberPsychoOnUpdate.timers.t0125s - 0.125
         if CyberPsycho.Time.stopTime then
             times = Game.GetTimeSystem()
             times:SetGameTimeBySeconds(CyberPsycho.Time.stopTimeValue)
@@ -31,9 +31,9 @@ function Str8upOnUpdate.Run(CyberPsycho, deltaTime)
         end
     end
 
-    Str8upOnUpdate.timers.t2s = Str8upOnUpdate.timers.t2s + deltaTime
-    if Str8upOnUpdate.timers.t2s > 2 then
-        Str8upOnUpdate.timers.t2s = Str8upOnUpdate.timers.t2s - 2
+    CyberPsychoOnUpdate.timers.t2s = CyberPsychoOnUpdate.timers.t2s + deltaTime
+    if CyberPsychoOnUpdate.timers.t2s > 2 then
+        CyberPsychoOnUpdate.timers.t2s = CyberPsychoOnUpdate.timers.t2s - 2
         if CyberPsycho.Vehicle.autoFixVehicle then
             CyberPsycho.Vehicle.fixVehicle()
         end
@@ -76,4 +76,4 @@ function Str8upOnUpdate.Run(CyberPsycho, deltaTime)
 
 end
 
-return Str8upOnUpdate
+return CyberPsychoOnUpdate

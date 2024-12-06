@@ -6,16 +6,16 @@ function getCWD(mod_name)
 end
 
 
-Str8upDev = {
-    description = "Str8up Dev Component",
+CyberPsychoDev = {
+    description = "CyberPsycho Dev Component",
     rootPath = getCWD("CyberPsycho")
 }
 
 
-function Str8upDev.Run(CyberPsycho)
+function CyberPsychoDev.Run(CyberPsycho)
 
     Game.GetPlayer():SetWarningMessage("notifications coming soon")
 
 end
 
-return Str8upDev
+return CyberPsychoDev

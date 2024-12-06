@@ -35,13 +35,7 @@ setmetatable(CyberPsycho, {
 
 -- Imports
 CyberPsycho.Data      = require(CyberPsycho.rootPath .. "modules/data")
-CyberPsycho.Cheats    = require(CyberPsycho.rootPath .. "modules/sections/cheats")
-CyberPsycho.Time      = require(CyberPsycho.rootPath .. "modules/sections/time")
-CyberPsycho.Vehicle   = require(CyberPsycho.rootPath .. "modules/sections/vehicle")
-CyberPsycho.Teleport  = require(CyberPsycho.rootPath .. "modules/sections/teleport")
 CyberPsycho.Player    = require(CyberPsycho.rootPath .. "modules/sections/player")
-CyberPsycho.Utilities = require(CyberPsycho.rootPath .. "modules/sections/utilities")
-CyberPsycho.Dev       = require(CyberPsycho.rootPath .. "modules/sections/dev")
 CyberPsycho.UI        = require(CyberPsycho.rootPath .. "modules/ui")
 CyberPsycho.OnUpdate  = require(CyberPsycho.rootPath .. "modules/onupdate")
 CyberPsycho.Hotkeys   = require(CyberPsycho.rootPath .. "modules/hotkeys")

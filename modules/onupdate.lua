@@ -17,60 +17,11 @@ function CyberPsychoOnUpdate.Run(CyberPsycho, deltaTime)
         end
     end
 
-    CyberPsychoOnUpdate.timers.t0125s = CyberPsychoOnUpdate.timers.t0125s + deltaTime
-    if CyberPsychoOnUpdate.timers.t0125s > 0.125 then
-        CyberPsychoOnUpdate.timers.t0125s = CyberPsychoOnUpdate.timers.t0125s - 0.125
-        if CyberPsycho.Time.stopTime then
-            times = Game.GetTimeSystem()
-            times:SetGameTimeBySeconds(CyberPsycho.Time.stopTimeValue)
-        elseif CyberPsycho.Time.timeMultiplier ~= 1 then
-            times = Game.GetTimeSystem()
-            if not times:IsPausedState() then
-                times:SetGameTimeBySeconds(math.floor(times:GetGameTimeStamp())+((CyberPsycho.Time.timeMultiplier-1)))
-            end
-        end
-    end
-
     CyberPsychoOnUpdate.timers.t2s = CyberPsychoOnUpdate.timers.t2s + deltaTime
     if CyberPsychoOnUpdate.timers.t2s > 2 then
         CyberPsychoOnUpdate.timers.t2s = CyberPsychoOnUpdate.timers.t2s - 2
-        if CyberPsycho.Vehicle.autoFixVehicle then
-            CyberPsycho.Vehicle.fixVehicle()
-        end
-        if CyberPsycho.Cheats.godMode then
-            CyberPsycho.Cheats.updateGodMode()
-        end
-    end
-
-    if CyberPsycho.Cheats.noFall then
-        vel = Game.GetPlayer():GetVelocity().z
-        if vel < -15 then
-            pos = Game.GetPlayer():GetWorldPosition()
-            closeToGround = not Game.GetSenseManager():IsPositionVisible(pos, Vector4.new(pos.x, pos.y, pos.z + (vel * deltaTime) - 1, pos.w))
-            if closeToGround then
-                CyberPsycho.Utilities.stopFall()
-            end
-        end
-    end
-
-    if CyberPsycho.Cheats.noClip then
-        if CyberPsycho.Cheats.noClipControls.forward then
-            CyberPsycho.Cheats.noClipTp("forward")
-        end
-        if CyberPsycho.Cheats.noClipControls.backward then
-            CyberPsycho.Cheats.noClipTp("backward")
-        end
-        if CyberPsycho.Cheats.noClipControls.left then
-            CyberPsycho.Cheats.noClipTp("left")
-        end
-        if CyberPsycho.Cheats.noClipControls.right then
-            CyberPsycho.Cheats.noClipTp("right")
-        end
-        if CyberPsycho.Cheats.noClipControls.up then
-            CyberPsycho.Cheats.noClipTp("up")
-        end
-        if CyberPsycho.Cheats.noClipControls.down then
-            CyberPsycho.Cheats.noClipTp("down")
+        if CyberPsycho.Player.godMode then
+            CyberPsycho.Player.updateGodMode()
         end
     end
 
